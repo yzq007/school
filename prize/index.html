@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>抽奖系统</title>
+	</head>
+	<style type="text/css">
+		.bd{
+			height: 400px;
+			width: 800px;
+			border: 1px solid black;
+			margin: 0 auto;
+		}
+		.bd h1{
+			text-align: center;
+			margin-bottom: 150px;
+		}
+		.bd input{
+			margin: 10px 5px;
+		}
+		.bd label:nth-of-type(1){
+			color: red;
+			text-decoration: inherit;
+		}
+		
+	</style>
+	<body>
+		<div class="bd">
+			<h1>抽奖系统</h1>
+			<label for="l1"><b>一等奖</b></label>  
+			<input type="text" name="i1" id="i1" value="" />
+			<label for="l1"><b>二等奖</b></label>  
+			<input type="text2" name="i2" id="i2" value="" />
+		    <input type="text3" name="i3" id="i3" value="" />
+			<input type="button" name="b" id="b" value="开始" />
+			<input type="button" name="bd" id="bd" value="停止" />
+			
+		</div>
+		<script type="text/javascript">
+
+			
+			var otext=document.getElementById("i1");
+			var otext2=document.querySelector("#i2");
+			var otext3=document.getElementById('i3');
+			//console.log(oNum);
+			var array=new Array(3);
+			var oBtn=document.getElementById("b");
+			var obtn=document.getElementById('bd');
+		    oBtn.onclick=function () {
+		    	oc=window.setInterval('run()',100);
+		    }
+			
+			
+		    obtn.onclick=function () {
+				window.clearInterval(oc);
+			 }
+			//oBtn.onclick=
+			function run () {
+      	 	    //otext.value=""+oNum;
+      	 	    
+      	 	    for (var i=0;i<3;i++) {//存三个数字在i
+					array[i]=Math.floor(Math.random()*10+1);//三个随机数输在数组array【i】
+				
+					for (var j=0;j<i;j++) {
+						if(array[i]==array[j]){
+							i--;
+							console.log(array[i]);
+							
+							
+						}
+					}
+				}
+			otext.value=array[0];
+			otext2.value=array[1];
+			otext3.value=array[2];
+     	    }
+ 		    
+		</script>
+	</body>
+</html>           

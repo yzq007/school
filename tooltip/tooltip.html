@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style type="text/css">
+		.container{
+			display: inline-block;
+			margin: 100px 500px;
+			text-align: center;
+		}
+		a{
+			text-decoration: none;
+		}
+		.tooltip {
+			position: relative;
+		}
+		.tooltip span{
+			    width: 180px;
+				padding: 5px 10px;
+				color: #FFFFFF;
+  				background: #000000;
+  				visibility: hidden;
+  				text-align: center;
+  				border-radius: 10px;
+  				position: absolute;
+  			/*	opacity: 0;*/
+  				transition:opacity .5s;
+		}
+		
+		
+		.tooltip span::after{
+			content: "";
+			width: 0px;
+			height: 0px;
+			position: absolute;
+		}
+		.tooltip[data-direction="top"] span{
+				left: -90px;
+				top: -38px;
+		}
+	    .tooltip[data-direction="top"] span::after{
+	    	/*画三角箭头*/
+				top: 100%;
+				left: 50%;
+  				margin-left: -8px;
+  				border-top: 8px solid black;
+  				border-right: 8px solid transparent;
+  				border-left: 8px solid transparent;
+		}
+		.tooltip[data-direction="bottom"] span{
+			/*内容的相对位置*/
+			left: -90px;
+			bottom: -38px;
+		}
+		.tooltip[data-direction="bottom"] span::after{
+			/*画三角箭头*/
+				bottom: 100%;
+				left: 50%;
+  				margin-left: -8px;
+  				border-bottom: 8px solid black;
+  				border-right: 8px solid transparent;
+  				border-left: 8px solid transparent;
+		}
+		.tooltip[data-direction="right"] span{
+				left: 30px;
+				top: 0px;
+				/*对话框*/
+			}
+			.tooltip[data-direction="right"] span::after{
+				  top: 50%;
+				  left: -8px;
+				  margin-top: -8px;
+				  border-right: 8px solid black;
+				  border-top: 8px solid transparent;
+				  border-bottom: 8px solid transparent;
+				  /*三角形*/
+			}
+			.tooltip[data-direction="left"] span{
+				right:30px; 
+				top:0px;
+			}
+			.tooltip[data-direction="left"] span::after{
+				  top: 50%;
+				  right: -8px;
+				  margin-top: -8px;
+				  border-left: 8px solid black;
+				  border-top: 8px solid transparent;
+				  border-bottom: 8px solid transparent;
+			}
+			.tooltip span.show{
+				/*span .show有空格是后代选择器，没有空格则是在一个元素上，这个元素包括这两个类才会有效果。
+				 * <span class="show">是同级<span><a class="show"></a></span>父子关系*/
+  				/*opacity: 1;*/
+  				visibility: visible;
+			}
+	</style>
+	<body>
+		<div class="container">
+			<h2>tooltip工具<a href="#" class="tooltip" data-direction="top">提示</a></h2>
+			<p><a href="#" class="tooltip" data-content="top" data-direction="top">上</a></p>
+			<p><a href="#" class="tooltip" data-content="下" data-direction="bottom">下</a></p>
+			<p><a href="#" class="tooltip" data-content="left" data-direction="left">左</a></p>
+			<p><a href="#" class="tooltip" data-content="右" data-direction="right">右</a></p>
+		</div>
+		<script type="text/javascript">
+			(function () {
+				var tips=document.querySelectorAll(".tooltip");//找到所有的类名为tooltip
+				if(tips.length==0){
+					return false;
+				}
+				for(var i=0;i<tips.length;i++){
+					//对每个tooltip做事件
+					var content=document.createElement("span");//创建一个span容器，取名为content
+					var data=tips[i].hasAttribute('data-content')?tips[i].getAttribute('data-content'):"目前为空";//是否已有了span内容，如果为空span里data-content的内容显示目前为空
+					var dir=tips[i].hasAttribute("data-direction")?tips[i].getAttribute('data-direction'):tips[i].setAttribute('data-direction','top');//是否已有定位，如果为空data-direction显示的定位在上方
+                    content.innerHTML=data;//把data设置的内容添加到创建好的span容器content里去
+                    tips[i].appendChild(content);
+                    //把内容添加到tips[i]
+                    tips[i].addEventListener("mouseover",function (event) {
+                    	//对tips[i]进行监听
+                    	var event=event||window.event;//定义事件event
+                    	var target=event.target||event.srcElement;//定义事件源target
+                    	//target事件属性可返回事件的目标节点（触发该事件的节点），如生成事件的元素、文档或窗口。
+                    	var targetspan=target.getElementsByTagName('span')[0];
+                    	//getElementsByTagName() 方法可返回带有指定标签名的对象的集合。
+                    	targetspan.classList.add('show');
+                    	//classList 属性返回元素的类名，作为 DOMTokenList 对象。
+                         //该属性用于在元素中添加，移除及切换 CSS 类。
+                         //classList 属性是只读的，但你可以使用 add() 和 remove() 方法修改它。
+                    	//对指定的对象添加show（css里）
+                    });
+                     tips[i].addEventListener("mouseout",function (event) {
+                    	var event=event||window.event;
+                    	var target=event.target||event.srcElement;
+                    	var targetspan=target.getElementsByTagName('span')[0];
+                    	targetspan.classList.remove('show');
+                    });
+				}
+			})();
+			
+		</script>
+	</body>
+</html>

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>game</title>
+	</head>
+	<style type="text/css">
+		body{
+			height: 1400px;
+          background: url(../../website2/v1/website1/img/banner.jpg) no-repeat center center;
+          background-size: cover;			
+		}
+		#first{
+		
+			height: 500px;
+			
+			width: 400px;
+			
+			margin: 0 auto;
+			display: none;
+		}
+	   
+		#first h1{
+			margin-left: 70px;
+		}
+		#first input{
+			border-radius: 20px;
+			
+		}
+		#first #num{
+			text-indent: 1em;
+		}
+		#second{
+			height: 500px;
+			width: 500px;
+			margin: 0 auto;
+		}
+		#second h1{
+			margin-left: 70px;
+		}
+		#second input{
+			width: 300px;
+			height: 50px;
+			margin: 25px auto;
+			border-radius: 20px;
+			background-color: #ffffff;
+			border: 1px solid #000;
+		}
+		#second input:focus{
+			background-color: #00ffff;
+			outline: none;
+		}
+	</style>
+	<body>
+		<div id="first">
+			<h1>猜数字游戏</h1>
+			<input type="number" name="num" id="num" min="0"/>
+			<input type="button" name="btn" id="btn" value="提交" />
+			<input type="button" name="btn1" id="btn1" value="重来" />
+			<input type="button" name="btn2" id="btn2" value="返回" />
+			<div id="time">
+		       剩余次数：
+			</div>
+			<div id="info">
+			历史纪录：	
+			</div>
+		</div>
+		<div id="second">
+			<h1>猜数字游戏</h1>
+			<input type="button" name="easy" id="easy" value="简单" /><br>
+			<input type="button" name="Medium" id="Medium" value="中等" /><br>
+			<input type="button" name="difficulty" id="difficulty" value="困难" /><br>
+		</div>
+
+	<script type="text/javascript">
+			var onum=document.getElementById('num');
+			var obtn=document.getElementById('btn');
+			var obtn1=document.getElementById('btn1');
+			var ofirst=document.getElementById('first');
+			var osecond=document.getElementById('second');
+			var otime=document.getElementById('time');
+            var oeasy=document.getElementById('easy');
+            var omedium=document.getElementById('Medium');
+            var odifficulty=document.getElementById('difficulty');
+			var oinfo=document.getElementById('info');
+		    var obtn2=document.getElementById('btn2');
+		    var gstime=6;
+		    //obtn=提交 obtn1=重来 obtn2=返回
+		    obtn1.style.display="none";
+		    obtn.addEventListener('click',clickI);
+		    obtn1.addEventListener('click',again);
+		    oeasy.onclick=function () {
+		      onum.placeholder="0-10，6次机会";
+		      ofirst.style.display="block";
+		      osecond.style.display="none";
+		      rnum=Math.floor(Math.random()*(10+1));
+		     }
+		     omedium.onclick=function () {
+		      onum.placeholder="0-50，6次机会";
+		      ofirst.style.display="block";
+		      osecond.style.display="none";
+		      rnum=Math.floor(Math.random()*(50+1));
+		      }
+		      odifficulty.onclick=function () {
+		      onum.placeholder="0-100，6次机会";
+		      ofirst.style.display="block";
+		      osecond.style.display="none";
+		      rnum=Math.floor(Math.random()*(100+1));
+		      }
+		   function clickI () {
+		   	    var num=onum.value;//赋值给num
+		        console.log(rnum);
+		   	if(gstime-->0){
+		   		otime.innerHTML="剩余"+gstime+"机会";
+		   		if (num>rnum) {
+		   		    oinfo.innerHTML="猪吧你，需要"+ num +"这么大吗";
+		   		  } else if(num<rnum){
+		   			oinfo.innerHTML="说你猪都是夸你了"+ num +"这么小合适吗";
+		   		  } else if(num==rnum){
+		   			oinfo.innerHTML="恭喜你答对了，你比猪要聪明";
+		   			closegame();
+		   		  }
+		       }
+		    if (gstime==0) {
+		   		closegame();
+		   	  }
+		     	onum.value="";
+		   	    onum.focus();
+		   	 }
+		    obtn2.onclick=function () {
+		   	ofirst.style.display="none";
+		   	osecond.style.display="block";
+		   }
+		   function again () {
+		   	var rnum=Math.floor(Math.random()*(10+1));
+		   	gstime=6;
+		   	onum.disabled=false;
+		   	obtn.style.display="block";
+		   	obtn1.style.display="none";
+		   	otime.innerHTML="剩余"+gstime+"机会";
+		   	
+		   }
+		   function closegame () {
+		   		onum.disabled=true;
+		   		obtn.style.display="none";
+		   		obtn1.style.display="block";	
+		   }
+		</script>
+		
+	</body>
+</html>

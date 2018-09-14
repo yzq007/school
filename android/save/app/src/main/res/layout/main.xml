@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:background="#eee"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#eee"
+        >
+
+　　　　<LinearLayout
+        android:id="@+id/first"
+        android:background="@drawable/shape1"
+        android:layout_marginTop="40dp"
+        android:gravity="center"
+        android:weightSum="4"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="100dp">
+        <TextView
+            android:id="@+id/t1"
+            android:gravity="center"
+            android:textSize="25dp"
+            android:layout_weight="3.9"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:text="15点30分会见马总"/>
+        <TextView
+
+            android:id="@+id/t2"
+            android:text="2018/01/20"
+            android:layout_weight="0.1"
+            android:background="@drawable/shape1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+
+            />
+        </LinearLayout>
+
+        <ListView
+            android:layout_marginTop="5dp"
+            android:layout_below="@id/first"
+            android:id="@+id/lv_title"
+            android:layout_width="fill_parent"
+            android:layout_height="350dp"
+
+            >
+        </ListView>
+
+
+
+        <LinearLayout
+            android:id="@+id/Button"
+            android:gravity="center"
+            android:layout_marginBottom="80dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true">
+            <ImageButton
+                android:id="@+id/btn_write"
+                android:background="#eee"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/pen"
+                />
+
+        </LinearLayout>
+    <include layout="@layout/bottom"></include>
+
+    </RelativeLayout>
+
+</RelativeLayout>

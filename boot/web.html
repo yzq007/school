@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>d2c</title>
+	</head>
+	<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+	<!-- 可选的 Bootstrap 主题文件（一般不用引入） -->
+	<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+	<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+	<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+	<link rel="stylesheet" type="text/css" href="../animate.css"/>
+	<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	<link rel="stylesheet" type="text/css" href="css/font-awesome-4.7.0/css/font-awesome.min.css" />
+	<style type="text/css">
+		.clearfix::after{
+			display:block;
+			clear: both;
+			content: "";
+		}
+		body {
+			margin: auto;
+		}
+		
+		.d {
+			font-size: 38px;
+			text-align: center;
+			height: 60px;
+			line-height: 60px;
+		}
+		
+		.dao {
+			height: 60px;
+			line-height: 60px;
+			text-align: center;
+		}
+		
+		.btn {
+			background: rgb(255, 255, 255, .8);
+			border: none;
+		}
+		.main{
+			max-width: 1200px;
+			margin: auto;
+			min-height: 250px;
+		}
+		.mainhead{
+			margin-top: 80px;
+   
+		}
+		.mainhead h1{
+			font-size: 50px;
+			text-align: center;
+		}
+		.mainhead p{
+			font-size: 18px;
+			text-align: center;
+		}
+		.main2{
+			text-align: center;
+			margin: 50px auto;
+		}
+		.main2 .btn2{
+			width: 180px;
+			border-radius: 25px;
+		}
+		.embed-responsive{
+			border: 1px solid #000;
+		}
+		.main3{
+			height: 677px;
+		}
+		.main4{
+			max-width: 1200px;
+			overflow: hidden;
+		}
+		.main4 .row .image{
+			height: 300px;
+			background: url(img/text.jpg) no-repeat center center;
+			background-size: 100%;
+			overflow: hidden;
+			
+		}
+		
+		.main4 .row .image2{
+			height: 300px;
+			background: url(img/text.jpg) no-repeat center center;
+			background-size: 100%;
+			overflow: hidden;
+		}
+		.btn3{
+			position: relative;
+			left: 30%;
+			top: 50%;
+			border-radius: 25px;
+			background: rgb(255,255,255,0);
+		}
+	.footer{
+		padding-top: 50px;	
+	}
+	.footer .row{
+		width: 1200px;
+		margin: auto;
+		border: 1px solid #000;
+	}
+	.span{
+		height: 60px;
+		line-height: 60px;
+		text-align: center;
+	}
+	.footer .r{
+		margin-top: 20px;
+	}
+	.row2{
+		text-align: center;
+	}
+	.row3{
+		height: 20px;
+	}
+	</style>
+
+	<body>
+		<!--head开始-->
+		<div class="head clearfix">
+			<div class="row">
+				<div class="d col-lg-2">D2C</div>
+				<div class="dao col-lg-4">
+					<div class="col-lg-3">
+						<div class="dropdown clearfix">
+							<button class="btn btn-default dropdown-toggle fa fa-address-book" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                                                               中国
+                              <span class="caret"></span>
+                               </button>
+							<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+								<li>
+									<a class="fa fa-address-card" href="#">   美国</a>
+								</li>
+								<li>
+									<a class="fa fa-angle-double-down" href="#">   俄国</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<div class="col-lg-3">功能</div>
+					<div class="col-lg-3">定价</div>
+					<div class="col-lg-3">栈中心</div>
+				</div>
+				<div class="dao col-lg-2 col-lg-offset-4">
+					<div class="btn-group" role="group" aria-label="...">
+						<button type="button" class="btn btn-default">登录或</button>
+						<button type="button" class="btn btn-default">免费试用</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--head结束-->
+        <!--main开始-->
+        <div class="main clearfix">
+        	<div class="mainhead clearfix">
+        		<h1>在同一个地方运行并管理应用程序</h1>
+        		<p>通过自己的服务器或任何公共云提供商</p>
+        	</div>
+        	<div class="main2 clearfix">
+        	  <button type="button" class="btn2 btn-default btn-lg">
+                <spanaria-hidden="true">现在就免费试用吧</span>
+              </button>
+        	</div>
+        	<div class="main3 clearfix">
+        		<!-- 16:9 aspect ratio -->
+				<div class="embed-responsive embed-responsive-16by9 clearfix">
+				  <iframe class="embed-responsive-item clearfix" src="https://www.baidu.com"></iframe>
+				</div>
+        	</div>
+        	<div class="main4 clearfix">
+                <div class="row clearfix">
+                	<div class="image col-lg-5">
+                		 <button type="button" class="btn3 btn-default btn-lg">
+                           <spanaria-hidden="true">现在就免费试用吧</span>
+                         </button>
+                	</div>
+                	<div class="image2 col-lg-5 col-lg-offset-2">
+                		 <button type="button" class="btn3 btn-default btn-lg">
+                           <spanaria-hidden="true">现在就免费试用吧</span>
+                         </button>
+                	</div>
+                </div>
+        	</div>
+        	 
+        </div>
+        
+        <!--main结束-->
+           <div class="footer">
+        	<div class="row">
+        		<div class="span col-lg-4"><span class="fa fa-align-justify"></span></div>
+        		<div class="span col-lg-4"><span class="fa fa-align-justify"></span></div>
+        		<div class="span col-lg-4"><span class="fa fa-align-justify"></span></div>
+        	</div>
+        	<div class="r row2">
+        		<div class="col-lg-4 col-lg-offset-4">OMODOM LLC. 24, Serafimi Deryabinoi</div>
+        		<div class="span col-lg-4"></div>
+        	</div>
+          </div>
+	</body>
+
+</html>

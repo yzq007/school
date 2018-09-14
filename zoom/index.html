@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+	</head>
+	<style type="text/css">
+		#zoom{
+			width: 180px;
+		    position: absolute;
+			left: 500px;
+			top: 100px;
+			overflow: hidden;
+		}
+		 #zoomer{
+			position: absolute;	
+			width: 100px;
+			height: 100px;
+			left: 0px;
+			top: 0px;
+			margin-left: -50px;
+			margin-top: -50px;
+			border-radius: 50%;
+			background-repeat: no-repeat;
+			
+			
+			border: solid 2px #fff;
+			opacity: 0;
+			transform: scale(0);
+			transition:transform.5s,opacity.5s;
+			pointer-events: none;
+		}
+		#zoom:hover #zoomer{
+			
+			opacity: 1;
+			transform: scale(1);
+		}
+		img{
+			width: 100%;
+		}
+		}
+	</style>
+	<body>
+		<div id="zoom">
+			<img src="img/a.jpg"/>
+			<div id="zoomer">
+				
+			</div>
+		</div>
+		<script type="text/javascript">
+			var ozoom=document.getElementById("zoom");
+			var ozoomer=document.getElementById("zoomer");
+			var img=ozoom.querySelector("img");
+			var ratio;
+			img.addEventListener("load",function() {
+				ratio=img.naturalWidth/img.width;
+				console.log(ratio);
+				ozoomer.style.backgroundImage="url(img/a.jpg)";
+			});
+			document.addEventListener("mousemove",function () {
+				//console.log("相对于屏幕左上角的值"+event.screenX,event.screenY);
+				//console.log("相对于目标事件的值"+event.offsetX,event.offsetY);
+				//console.log("相对于浏览器可视区域左上角的值"+event.clientX,event.clientY);
+				//console.log("相对于文档左上角的值"+event.pageX,event.pageY);
+				//console.log("相对于事件触发的对象"+event.layerX,event.layerY);
+             
+				var x=event.offsetX||event.clientX;
+				var y=event.offsetY||event.clientY;
+				ozoomer.style.left=x+"px";
+				ozoomer.style.top=y+"px";
+				ozoomer.style.backgroundPosition=(-ratio*x+50)+"px "+(-ratio*y+50)+"px";
+			});
+		</script>
+	</body>
+</html>

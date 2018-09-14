@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style type="text/css">
+			.note{
+			position: relative;
+			border: 1px solid #000;
+		    width: 500px;
+		    height: 500px;
+		}
+		.note .text{
+			position: absolute;
+			background: url(img/1.ico);
+			left: 150px;
+			top: 150px;
+			width: 128px;
+			height:128px;
+			background-size: 100%;
+			overflow: hidden;
+			animation: abc 18s infinite;
+		}
+		@keyframes abc{
+			from{background: url(img/1.ico);}
+			10%{ transform: rotate(720deg);}
+			30%{background: url(img/2.ico);}
+			50%{ransform: translateX(100px);}
+			60%{transform: scale(1.5);}
+			70%{background: url(img/3.ico);}
+			80%{transform: translateY(100px)}
+			90%{background: url(img/4.ico);}
+			100%{background: url(img/1.ico);}
+		}
+		</style>
+	</head>
+	<body>
+		<div class="note">
+			<div class="text">
+				
+			</div>
+		</div>
+	</body>
+</html>

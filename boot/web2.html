@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>web2</title>
+	</head>
+	<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+	<!-- 可选的 Bootstrap 主题文件（一般不用引入） -->
+	<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+	<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+	<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+	<link rel="stylesheet" type="text/css" href="../animate.css"/>
+	<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	<link rel="stylesheet" type="text/css" href="css/font-awesome-4.7.0/css/font-awesome.min.css" />
+	<!-- 可选的 Bootstrap 主题文件（一般不用引入） -->
+	
+    <link rel="stylesheet" type="text/css" href="css/web2.css"/>
+	<body>
+		<div class="bd">
+
+		</div>
+		<!--head开始-->
+		<div class="header clearfix">
+			<div class="head row clearfix">
+				<div class="col-lg-6 col-sm-6">
+					<img src="img/logo-2x.png" />
+				</div>
+				<div class="col-lg-6 col-sm-6 clearfix">
+					<div class="col-lg-4 col-sm-4">
+						<a href="#">概述</a>
+					</div>
+					<div class="col-lg-4 col-sm-4">
+						<a href="#">文档</a>
+					</div>
+					<div class="col-lg-4 col-sm-4">
+						<a href="#">新闻</a>
+					</div>
+					<a class="my" href="https://github.com/yzq007">My Github</a>
+				</div>
+
+			</div>
+		</div>
+		<!--header1-->
+		<div class="header1">
+			<h1>将纯文本转化为静态网站和博客</h1>
+		</div>
+		<!--header1结束-->
+		<!--header结束-->
+
+		<!--main开始-->
+		<div class="main">
+			<div class="row">
+				<div class="kuan col-sm-6 col-md-4">
+					<div class="thumbnail">
+						<h3>简单</h3>
+						<p>无需数据库、评论功能，不需要不断的更新版本——只用关心你的博客内容。</p>
+						<div class="caption">
+							<img id="easy" src="img/text.jpg" />
+						</div>
+					</div>
+				</div>
+				<div class="kuan col-sm-6 col-md-4">
+					<div class="thumbnail">
+						<h3>静态</h3>
+						<p>只用 Markdown (或 Textile)、Liquid、HTML & CSS 就可以构建可部署的静态网站。</p>
+						<div class="caption">
+							<img id="quiet" src="img/6.jpg" />
+						</div>
+					</div>
+				</div>
+				<div class="kuan col-sm-6 col-md-4">
+					<div class="thumbnail">
+						<h3>博客形态</h3>
+						<p>自定义地址、分类、页面、博客内容 以及 自定义的布局设计 都是系统中的一等公民。</p>
+						<div class="caption">
+							<img id="book" src="img/2.jpg" />
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="main1">
+			<div class="only">
+				<h2>只需几秒就能让网站跑起来。</h2>
+			</div>
+			<div class="panel panel-default">
+
+				<div class="panel-heading">就这几个指令</div>
+				<div class="panel-body">
+					没错，这里就是那么些内容。
+				</div>
+			</div>
+		</div>
+		<div class="main2">
+			<div class="content clearfix">
+				<img src="img/octojekyll.png"/>
+				<div class="h content">
+					<h2>使用 GitHub 的免费主机</h2>
+					<p>不想再与主机服务商打交道? GitHub Pages 可以运行 Jekyll, 你很简单就可以完全免费的在 GitHub 上发布网站 — 自定义域名</p>
+				</div>
+			</div>
+		</div>
+		<!--main结束-->
+
+		<!--footer开始-->
+		<div class="footer">
+         <div class="row">
+         	 <div class="col-lg-6">
+         	 	<p>英文文档由<b> Tom Preston-Werner</b> 基于MIT 许可发布。</p>
+         	 	<p>中文文档由Bootstrap中文网翻译整理，并参考了jekyllcn.com的译文。</p>
+         	 </div>
+         	  <div class="col-lg-6">
+         	  	<p>Proudly hosted by <a href="https://github.com/yzq007">GitHub</a></p>
+         	  </div>
+         </div>
+		</div>
+		<!--footer结束-->
+		<script type="text/javascript">
+			var oeasy=document.getElementById("easy");
+			var oquiet=document.getElementById("quiet");
+			var obook=document.getElementById("book");
+			var caption=document.getElementsByClassName("caption")[0];
+			var caption1=document.getElementsByClassName("caption")[1];
+			var caption2=document.getElementsByClassName("caption")[2];
+			var oe=document.createElement("div");
+				oe.className="oe";
+				caption.appendChild(oe);
+			var data1=oeasy.getAttribute("id");
+			
+			var oq=document.createElement("div");
+				oq.className="oq";
+				caption1.appendChild(oq);
+			var data2=oquiet.getAttribute("id");
+			
+			var ob=document.createElement("div");
+				ob.className="ob";
+				caption2.appendChild(ob);
+			var data3=obook.getAttribute("id");
+			oeasy.addEventListener("mousemove",function () {
+				oe.style.display="block";
+				oe.innerHTML=data1;
+			});
+			oeasy.addEventListener("mouseout",function () {
+				oe.style.display="none";
+			});
+			oquiet.addEventListener("mousemove",function () {
+				oq.style.display="block";
+				oq.innerHTML=data2;
+			});
+			oquiet.addEventListener("mouseout",function () {
+				oq.style.display="none";
+			});
+				obook.addEventListener("mousemove",function () {
+				ob.style.display="block";
+				ob.innerHTML=data3;
+			});
+			obook.addEventListener("mouseout",function () {
+				ob.style.display="none";
+			});
+		</script>
+	</body>
+
+</html>

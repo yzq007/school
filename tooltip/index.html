@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+	</head>
+	<style type="text/css">
+		a{
+			display: inline-block;
+			position: relative;
+			margin: 250px;
+		}
+		a #k{
+			width: 120px;
+			height: 30px;
+			line-height: 30px;
+	        position: absolute;	
+	        left: -32px;
+	        top: -40px;
+	        background: black;
+	        color: white;
+	        text-align: center;
+			display: none;
+		}
+		a #k::after{
+			content: " ";
+			display: block;
+			position: absolute;
+			left: 50px;
+		    width: 0px;
+			height: 0px;
+			border: 10px solid;
+			border-color: black transparent transparent transparent;
+			/*三角形*/
+		}
+		a:hover #k{
+			display: block;
+		}
+	</style>
+	<body>
+		<a href="js">tooltip<span id="k">提示框</span></a>
+	</body>
+</html>

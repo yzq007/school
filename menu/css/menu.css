@@ -1,0 +1,37 @@
+.clearfix::after{
+	content: "";
+	display:table;
+	clear:both;
+}
+p{
+	font-size:48px;
+	text-align: center;
+}
+.menu{ 
+    width:300px;
+    margin:20px auto;
+}
+.menu ul{
+	 border-radius: 10px;
+	padding:0px;
+	background: linear-gradient(#fff,#ccc);
+}
+.menu ul li{
+	float:left;
+	list-style-type: none;
+	padding:0px;
+}
+.menu ul li a{
+	text-decoration: none;
+	padding:20px; 	
+}
+.menu ul li ul{
+	display:block;
+   opacity: 0;
+}
+.menu ul li ul:hover{
+		opacity: 10;
+}
+.menu ul li ul li{
+	float:none;
+}

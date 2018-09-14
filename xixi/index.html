@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>智力游戏</title>
+	</head>
+	<style type="text/css">
+		body{
+			margin: 0 auto;
+			height: 400px;
+			width: 333px;
+		}
+		h2{
+			text-align: center;
+			color: deepskyblue;
+		}
+		#da{
+			width: 333px;
+			height: 250px;
+		}
+		#start{
+			display: block;
+			float: left;
+			margin-left:20px ;
+			text-align: center;
+			width: 80px;
+			border: 5px solid #00BFFF;
+			background: #FFF;
+		}
+		#end{
+		 margin-right: 0px;
+			float: right;
+			margin-right:20px ;
+			text-align: center;
+			width: 80px;
+			border: 5px solid #00BFFF;
+			background: #FFF;
+		}
+	</style>
+	<body>
+		<h2>这是一个测智力的游戏，请你好好答</h2>
+		<div id="da">
+			<div id="start">
+			开始答题
+		</div>
+		<div id="end">
+			放弃答题
+		</div>
+		</div>
+		<script type="text/javascript">
+			var ostart=document.getElementById("start");
+			var oend=document.getElementById("end");
+			var oda=document.getElementById("da");
+		    ostart.addEventListener("click",function  () {
+		  
+		     setInterval(function a () {
+		    	alert("你确定你是猪码");
+		    },100);
+		    });
+		  oend.addEventListener("click",function  () {
+		  
+		     setInterval(function a () {
+		    	alert("你是猪码你");
+		    },100);
+		    });
+		</script>
+		
+	</body>
+</html>

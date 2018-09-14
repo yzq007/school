@@ -1,0 +1,282 @@
+clearfix::after{
+	display: table;
+	content: "";
+	clear: both;
+}
+*{
+	box-sizing: border-box;
+}
+li{
+	list-style-type: none;
+}
+a{
+	text-decoration: none;
+	color: #000;
+}
+a:hover{
+	text-decoration: underline;
+}
+body{
+	min-width: 800px;
+	min-height: 1500px;
+
+	margin: auto;
+}
+/*
+ header
+ * */
+header .head{
+	width: 70%;
+	height: 90px;
+	margin: auto;
+
+	
+}
+header .head .left{
+	float: left;
+	margin-top: 6px;
+}
+header .head .right{
+	width: 500px;
+	float: right;
+	right: 0;
+
+}
+header .head .right li{
+	float: left;
+	font-size: 14px;
+	width:100px;
+	height: 80px;
+	line-height: 80px;
+	text-align: center;
+	border-left: 1px dashed rgba(0,0,0,.2);
+}
+header .head .right li a{
+	text-decoration: none;
+}
+header .head .right li:nth-last-child(2){
+	border-right: 1px dashed rgba(0,0,0,.2);
+}
+/*
+ 绝对定位的元素的位置相对于最近的已定位祖先元素，如果元素没有已定位的祖先元素，那么它的位置相对于最初的包含块。
+对于定位的主要问题是要记住每种定位的意义。所以，现在让我们复习一下学过的知识吧：相对定位是“相对于”元素在文档中的初
+始位置，而绝对定位是“相对于”最近的已定位祖先元素，如果不存在已定位的祖先元素，那么“相对于”最初的包含块。
+ * */
+header .head .right ul{
+	position: relative;
+	width: 600px;
+	margin: 0px;
+}
+header .head .right li.top{
+	position: absolute;
+	width: 100px;
+	top: 0px;
+	left: 40px;
+	height: 3px;
+	background-color: blue;
+	z-index: 10;
+	transition: all .5s;
+}
+
+header .head .right li:nth-child(2):hover~li.top{
+	left: 140px;
+}
+header .head .right li:nth-child(3):hover~li.top{
+	left: 240px;
+}
+header .head .right li:nth-child(4):hover~li.top{
+	left: 340px;
+}
+header .head .right li:nth-child(5):hover~li.top{
+	left: 440px;
+}
+header .head .right li:hover a{
+	color: blue;
+}
+/*
+ main content
+ * */
+main .b{
+	min-height: 450px;
+	width: 100%;
+	background: url(../img/banner2.jpg) no-repeat center top;
+	background-size: 100%;
+	position: relative;
+}
+main .b .title{
+	color: rgba(255,255,255,.6);
+}
+main .b .title h2{
+	position: absolute;
+	left: 51%;
+	top: 60px;
+}
+main .b .title p{
+	position: absolute;
+	left: 51%;
+	top: 180px;
+}
+main .b .ig{
+	position: absolute;
+	width: 243px;
+	height: 78px;
+	left: 51%;
+	top: 250px;
+	overflow: hidden;
+
+}
+main .b .ig img{
+	width: 100%;
+
+	left: 51%;
+	top: 230px;
+}
+main .b .ig:hover img{
+   transform: translateY(-75px);
+}
+main .b .title ul{
+	position: absolute;
+	left: 51%;
+	top: 330px;
+	padding: 0px;
+	margin: 0px;
+	border-top: 1px dashed rgba(0,0,0,.2);
+}
+main .b .title ul li{
+	float: left;
+
+}
+main .b .title ul li a{
+	color: #fff;
+	padding: 0px 5px;
+}
+main .b .title ul li a:hover{
+	text-decoration: underline;
+}
+main .b .title ul li:nth-last-child(1) a{
+	padding: 0px 5px;
+	border-left: 1px dashed #fff;
+}
+/*
+ main .photo
+ * */
+main .photo{
+	width: 85%;
+	min-height: 200px;
+	left: 0px;
+	right: 0px;
+	top: 0px;
+	bottom: 0px;
+	margin: auto;
+}
+main .photo figure{
+	float: left;
+	width: 314px;
+	margin: 20px 10px;
+	height: 168px;
+	overflow: hidden;
+	position: relative;
+}
+main .photo figure img{
+	width: 314px;
+	height: 188px;
+	overflow: hidden;
+	transition: transform .5s;
+}
+main .photo figure:hover img{
+	 transform: translateY(-10px);
+}
+main .photo figure:nth-child(1){
+	margin-left: 110px;
+}
+main .photo figure figcaption{
+	position: absolute;
+	color: #fff;
+	bottom: 0px;
+	width: 100%;
+	text-align: center;
+	background-color: rgba(255,255,255,.6);
+	height: 30px;
+	line-height: 30px;
+}
+
+/*
+ main link
+ * */
+main .link{
+	min-height: 350px;
+	width: 70%;
+	left: 0px;
+	right: 0px;
+	top: 0px;
+	bottom: 0px;
+	margin: auto;
+	margin-top: 50px;
+}
+main .link .note{
+	width: 100%;
+	margin:20px 0px;
+	min-height: 150px;
+	border-top: 1px dashed rgba(0,0,0,.2);
+}
+main .link .note h3{
+	text-align: right;
+	height: 20px;
+	width: 100px;
+	border-left: 3px solid blue;
+	margin-left: 10px;
+}
+main .link .note ul{
+	float: left;
+	padding: 0px;
+	margin-top: 10px;
+}
+main .link .note ul li{
+	float: left;
+	font-size: 14px;
+	text-align: center;
+	width: 25%;
+	margin: 10px 0px;
+}
+
+main .link .text{
+	width: 100%;
+	margin:20px 0px;
+	min-height: 150px;
+	border-top: 1px dashed rgba(0,0,0,.2);
+}
+main .link .text h3{
+	text-align: right;
+	height: 20px;
+	width: 100px;
+	border-left: 3px solid blue;
+	margin-left: 10px;
+}
+main .link .text ul{
+	float: left;
+	padding: 0px;
+	margin-top: 10px;
+}
+main .link .text ul li{
+	float: left;
+	font-size: 14px;
+	text-align: center;
+	width: 10%;
+	margin: 10px 0px;
+}
+/*
+ fotter
+ * */
+footer{
+	min-height: 80px;
+	width: 100%;
+	left: 0px;
+	right: 0px;
+	top: 0px;
+	bottom: 0px;
+	margin: auto;
+	text-align: center;
+}
+footer .f a:hover{
+	text-decoration: underline;
+}

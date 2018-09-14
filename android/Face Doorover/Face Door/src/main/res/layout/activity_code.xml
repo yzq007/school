@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/codetitle"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center_vertical"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:weightSum="10"
+        android:background="@drawable/shadow">
+<ImageView
+    android:id="@+id/back"
+    android:layout_width="0dp"
+    android:layout_weight="2"
+    android:layout_height="30dp"
+    android:src="@drawable/back"
+    />
+    <TextView
+        android:id="@+id/text"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:text="我的二维码"
+        android:layout_weight="6"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:textSize="20dp"
+        />
+        <TextView
+            android:layout_weight="2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            />
+
+    </LinearLayout>
+    <RelativeLayout
+        android:id="@+id/codecontent"
+        android:layout_below="@id/codetitle"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <ImageView
+    android:id="@+id/img"
+
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:src="@drawable/erweima"
+    />
+    </RelativeLayout>
+</RelativeLayout>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>表单</title>
+	</head>
+    <style type="text/css">
+    body{
+    	background-color: #ADD8E6;
+    }
+	.formlist{
+		width: 400px;
+		height: 300px;
+		position: absolute;
+		top: 0px;
+		bottom: 0px;
+		right: 0px;
+		left: 0px;
+		margin: auto;
+		text-align: center;
+		background-color: #fff;
+	}
+    .formlist input:not([type="submit"]){
+    	width: 70%;
+    	height: 30px;
+    	line-height: 30px;
+    	margin: 10px 0;
+    	text-indent: 1em;
+    	border: none;
+    	outline: none;
+    	border: 1px dashed #00ffff;
+    	transition: all.5s;
+    }
+     .formlist input:not([type="submit"]):focus{
+     	box-shadow: inset 0px 0px 6px 0px rgba(0,0,0,.5);
+     	border: 2px solid lightblue;
+     }
+    .formlist input[type="submit"]{
+    	width: 40%;
+    	height: 40px;
+    	line-height: 40px;
+       position: absolute;
+       outline: none;
+       border: none;
+       right: 30%;
+       left: 30%;
+    bottom:-25px;
+    box-shadow: 0px 2px 3px 0px rgba(0,0,0,.5);
+    cursor: pointer;
+    transition: all.5s;
+    }
+     .formlist input[type="submit"]:hover{
+     	letter-spacing: 6px;
+     	background-color: black;
+     	color: #FFFFFF;
+     }
+    </style>
+	<body>
+		<form action="#" class="formlist" method="post">
+			<h3>个人信息</h3>
+			<input type="text" name="user" id="user" value="张三" placeholder="请输入用户名" />
+			<input type="text" name="age" id="age" value="" placeholder="请输入年龄"/>
+			<input type="email" name="mail" id="mail" value="" placeholder="请输入邮箱"/>
+			<input type="submit" name="submit" id="submit" value="提交信息"/>
+		    <input type="file" name="pic" id="pic" value="上传图片/文件" />
+		</form>
+		<div id="afd">
+			男：<input type="radio" name="gender" id="gender" value="男" checked="checked"/>
+			女：<input type="radio" name="gender" id="gender" value="女" />
+		</div>
+			
+	</body>
+</html>
+<!--action 发送到**--  method="post"隐秘的发送文件>

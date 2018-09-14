@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>打地鼠</title>
+	</head>
+	<style type="text/css">
+		body{
+		/*	cursor: url(img/bird.png),auto;*/
+			background: url(img/bg.jpg) no-repeat center top;
+			background-size: 75%;
+			background-position-y: 10px;
+		}
+		.tabb{
+			width: 400px;
+			text-align: center;
+			margin: auto;
+			padding-left: 80px;
+		}
+		.text{
+			position: absolute;
+			width: 250px;
+			text-align: center;
+			right:5%;
+			top: 0px;
+		}
+		.table{
+			width: 400px;
+			margin: auto;
+			margin-top: 100px;
+			box-shadow: rgba(0,0,0,0.2);
+			cursor: url(img/hammer_48px_1121277_easyicon.net.png),auto;
+		}
+	</style>
+	<body>
+		<audio loop="loop" hidden="hidden ">
+			  <source src="music/da.mp3" type="audio/mp3" />  
+		</audio>
+		<table class="tabb">
+			<tr>
+				<td>游戏时间:</td>
+				<td><input type="text" value="1" class="minute"/> 分钟</td>
+			</tr>
+			<tr>
+				<td>倒计时间:</td>
+				<td id="show"></td>
+			</tr>
+			<tr>
+				<td>出现间隔:</td>
+				<td><input type="text" value="1"/> 秒钟</td>
+			</tr>
+			<tr>
+				<td>停留时间:</td>
+				<td><input type="text" value="1"/> 秒钟</td>
+			</tr>
+			<tr>
+				<td>得分情况:</td>
+				<td class="score"></td>
+			</tr>
+			<tr>
+				<td><input type="button" value="开始游戏" onclick="timee(),star(),showtime()"/></td>
+				<td><input type="button" value="退出游戏" onclick="close1()"/></td>
+			</tr>
+		</table>
+		
+		<div class="text">
+			<p>游戏说明</p>
+			<p>点击开始游戏按钮，开始游戏，打中地鼠得100分,来吧，让我看看你有多么强大。</p>
+		</div>
+		
+		<div class="table">
+			<table border="1px" cellspacing="1" cellpadding="0">
+				<tr>
+					<td><img src="img/00.jpg"/></td>
+					<td><img src="img/00.jpg"/></td>
+					<td><img src="img/00.jpg"/></td>
+					<td><img src="img/00.jpg"/></td>
+					<td><img src="img/00.jpg"/></td>
+				</tr>
+				<tr>
+					<td><img src="img/00.jpg"/></td>
+					<td><img src="img/00.jpg"/></td>
+					<td><img src="img/00.jpg"/></td>
+					<td><img src="img/00.jpg"/></td>
+					<td><img src="img/00.jpg"/></td>
+				</tr>
+				<tr>
+					<td><img src="img/00.jpg"/></td>
+					<td><img src="img/00.jpg"/></td>
+					<td><img src="img/00.jpg"/></td>
+					<td><img src="img/00.jpg"/></td>
+					<td><img src="img/00.jpg"/></td>
+				</tr>
+				<tr>
+					<td><img src="img/00.jpg"/></td>
+					<td><img src="img/00.jpg"/></td>
+					<td><img src="img/00.jpg"/></td>
+					<td><img src="img/00.jpg"/></td>
+					<td><img src="img/00.jpg"/></td>
+				</tr>
+				<tr>
+					<td><img src="img/00.jpg"/></td>
+					<td><img src="img/00.jpg"/></td>
+					<td><img src="img/00.jpg"/></td>
+					<td><img src="img/00.jpg"/></td>
+					<td><img src="img/00.jpg"/></td>
+				</tr>
+			</table>
+		</div>
+	
+		<script type="text/javascript">
+			var oa,ob,oc,flag;
+		  var obtn=document.querySelector(".start");
+		  var i;
+		  var oimg=document.querySelectorAll("img");
+		  var ominute=document.querySelector(".minute");
+          var opp=document.querySelector("#show");
+          var oscore=document.querySelector(".score");
+	      var time=60;
+	      var fen=0;
+	      var auto=document.querySelector("audio");
+//	       flag=true;
+	     function star() {
+	       auto.play();
+//	         if(flag){
+	       //地鼠随机位置出现
+	     	var i=Math.floor(Math.random()*25);
+	     	oimg[i].src="img/01.jpg";
+	     	
+	     	setTimeout(function () {
+	     		//过四秒以后执行
+	     		//把出来后过了时间的地鼠清除
+	      	 	oimg[i].src="img/00.jpg";
+	      	 	//清除点击地鼠点击事件
+	      	   console.log("地鼠");
+	      	 	oimg[i].removeEventListener("click",hhh,false);
+	      	 },4000);	
+	      	 
+	    setTimeout(function () {
+	    	//过一秒以后执行
+	      	 	oimg[i].src="img/03.jpg";
+//	      	 	oimg[i].removeEventListener("click",hhh,false);
+               console.log("笑");
+	      	 },1000);	 
+	      	 
+	      	 //点击地鼠事件
+	      	 function hhh(){
+	      	 	oimg[i].src="img/02.jpg"; 
+	      	 	fen=fen+100;
+	      	    oscore.innerHTML=fen;
+	      	 }
+	      	 oimg[i].addEventListener("click",hhh,false);  
+	      	 
+	     ob=setTimeout("star()",5000);   
+	    
+	     }; 
+	   
+	    function showtime(){
+	    	
+	    	time--;
+	    	
+	    	opp.innerHTML=time+"秒";
+	    	
+	    	if(time<1){
+	    		close1();
+			}else{
+			  oc=setTimeout("showtime()",500);
+			}
+	    }
+	
+	function timee () {
+		  if(time!=60){
+	      	alert("竟然还要改时间，看不起你");
+	      }
+		  time=ominute.value*60;
+	}
+	function close1(){
+	
+//		flag=false;
+alert("得分情况："+oscore.innerHTML+"分");
+//	clearTimeout(oa);
+	clearTimeout(ob);
+	clearTimeout(oc);
+	auto.pause();
+	oimg.src="img/00.jpg";
+	}
+	
+	
+	
+		</script>
+	</body>
+</html>

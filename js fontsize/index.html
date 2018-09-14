@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		
+		<style type="text/css">
+		#a{
+			font-size: 14px;	
+			text-indent: 2em;
+		}
+	</style>
+	</head>
+	
+	<body>
+		<a id='d' href="javascript:">大</a>&nbsp;<a id='x' href="javascript:">小</a>
+		
+		<div id="a">
+			<p>JavaScript是一种直译式脚本语言，是一种动态类型、弱类型、基于原型的语言，内置支持类型。</p>
+		</div>
+		<script type="text/javascript" charset="UTF-8">
+		    var a=document.getElementById('a');
+			var x=document.getElementById('x');
+			var d=document.getElementById('d');
+			var i=14;
+			
+			d.onclick=function(){
+				i+=2;
+				a.style.fontSize=i+'px';
+			}
+			x.onclick=function(){
+				i-=2;
+				a.style.fontSize=i+'px';
+			}
+			
+		</script>
+	</body>
+</html>

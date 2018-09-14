@@ -1,0 +1,225 @@
+	.clearfix::after {
+			display: block;
+			clear: both;
+			content: "";
+		}
+		
+		body {
+	
+			width: 800px;
+			margin: auto;
+			background: rgb(0, 0, 0, .8);
+		}
+		
+		.bd {
+			position: absolute;
+			height: 5px;
+			background: orange;
+			width: 100%;
+			top: 0;
+			left: 0px;
+		}
+		
+		.header {
+			position: fixed;
+			top: 0;
+			z-index: 2;
+			width: 800px;
+			padding: 20px 0px;
+			min-height: 80px;
+			line-height: 80px;
+			background-color: rgba(0,0,0,.5);
+		}
+		
+		.header img {
+			width: 200px;
+			size: 100%;
+		}
+		
+		.my {
+			position: absolute;
+			top: 65px;
+			height: 20px;
+			width: 100px;
+			line-height: 20px;
+			left: 30px;
+		}
+		
+		.header .row {
+			max-width: 800px;
+		}
+		
+		.header .row .col-lg-6 {
+			text-align: center;
+		}
+		
+		.header .row .col-lg-4 {
+			padding: 0px;
+			padding-top: 10px;
+			text-align: center;
+			font-size: 18px;
+		}
+		
+		.header .row .col-lg-4 a {
+			color: orange;
+		}
+		.header1{
+			margin-top: 150px;
+		}
+		h1 {
+			color: white;
+			text-align: center;
+		}
+		h3 {
+			text-align: center;
+		}
+		
+		.main {
+			margin-top: 50px;
+		}
+		
+		.main .row .thumbnail {
+			overflow: hidden;
+		}
+		
+		.main .row .thumbnail .caption {
+			padding: 0px;
+			position: relative;
+		}
+		
+		.main .row .thumbnail img {
+			width: 235px;
+			height: 133px;
+		}
+		
+		.main1 {
+			position: relative;
+		}
+		
+		.main1 .only {
+			background: #3f1f1f;
+			text-align: left;
+			border-radius: 25px;
+			box-shadow: 0px -2px 5px rgba(255, 255, 255, .8);
+		}
+		
+		.main1 .only h2 {
+			color: white;
+			height: 150px;
+			line-height: 150px;
+			font-size: 20px;
+			font-style: italic;
+		}
+		
+		.main1 .panel {
+			width: 38%;
+			position: absolute;
+			top: -12%;
+			right: 6%;
+			border-radius: 2px;
+		}
+		
+		.main1 .panel .panel-heading {
+			text-align: center;
+		}
+		
+		.main1 .panel .panel-body {
+			height: 138px;
+			line-height: 100px;
+			color: white;
+			background: gray;
+		}
+		.main2 {
+			position: relative;
+			width:98%;
+		}
+		.main2 .content{
+			color: white;
+			background: gray;
+			position: relative;
+			height: 180px;
+			width: 100%;
+			
+			z-index: -1;
+			margin-top: 50px;
+		}
+		.main2::before{
+			position: absolute;
+			content: "";
+			width: 35%;
+			background-color: gray;
+			bottom: 0;
+			left: -35%;
+			
+			height: 180px;
+		}
+		.main2::after{
+			position: absolute;
+			content: "";
+			width: 37%;
+			background-color: gray;
+			bottom: 0;
+			right: -37%;
+			
+			height: 180px;
+		}
+		.main2 .content img{
+			height: 250px;
+			size: 100%;
+			position: absolute;
+			top: -13%;
+		}
+		.main2 .content .h{
+			width: 45%;
+			position: absolute;
+			right: 45px;
+			margin: 0;
+		}
+			.main2 .content .h h2{
+				margin-bottom: 25px;
+				color: orange;
+			}
+			.footer{
+				margin-top: 80px;
+				text-align: center;
+			}
+			.footer p{
+				color: white;
+			}
+			b{
+				font-size: 18px;
+				font-style: italic;
+				color: orange;
+			}
+			.footer a{
+				font-size: 28px;
+				font-style: oblique;
+			}
+			.oe{
+				position: absolute;
+				display: block;
+				color: #f00;
+			    left: 40%;
+			    top: 45%;
+			    font-size: 25px;
+				z-index: 50;
+			}
+			.oq{
+				position: absolute;
+				display: block;
+				color: #f00;
+			    left: 40%;
+			    top: 45%;
+			    font-size: 25px;
+				z-index: 50;
+			}
+			.ob{
+				position: absolute;
+				display: block;
+				color: #f00;
+			    left: 40%;
+			    top: 45%;
+			    font-size: 25px;
+				z-index: 50;
+			}
+

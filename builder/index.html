@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+	</head>
+	<style type="text/css">
+		
+		.win{
+			position: fixed;
+			width: 200px;
+			height: 200px;
+			left: 0;
+			right: 0;
+			margin:auto;
+			background: #00ffff;
+			display: none;
+			
+		}
+		.btn{
+			position: absolute;
+			top: 0px;
+			right: 2px;
+			cursor: pointer;
+		}
+	</style>
+	<script src="//cdn.bootcss.com/gsap/latest/TweenMax.min.js"></script>
+	
+	<link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+	
+	<body>
+		<a class="modal" href="javascript:" data-content = "一些内容">打开弹框</a>
+		<div class="modal" data-content = "其他内容">再开一个</div>
+	</body>
+	<script type="text/javascript">
+		//<script src="//cdn.bootcss.com/gsap/latest/TweenMax.min.js">动画效果
+		//<link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">图标按钮
+//	   var omodal=document.getElementsByClassName('modal')[0];
+        //类有多个【0】代表找到的第一个类
+       var omodal=document.getElementsByClassName("modal");
+       //两个类     一个类名
+	   var owin,obtn,ocont;
+	   owin=document.createElement("div");
+	   owin.className="win";
+	   document.body.appendChild(owin);
+	    //在页面中增加一个窗口div
+	    obtn=document.createElement("div");
+	    obtn.className="btn";
+	    obtn.innerHTML="<i class='fa fa-close'></i>";
+	    owin.appendChild(obtn);
+	    //在窗口里面添加一个关闭按钮的div
+	    ocont=document.createElement("div");
+	    ocont.className="content";
+	    owin.appendChild(ocont);
+	    //在窗口里添加一个存放内容的div
+       for (var i=0;i<omodal.length;i++) {
+       	//循环     0   1  没有等于
+       	  	omodal[i].addEventListener("click",openwin);
+       }
+	  
+	   	obtn.addEventListener("click",close);
+	
+	   function openwin () {
+	   	   owin.style.display="block";
+	   	   TweenMax.to(owin,2,{width:"250px",height:"250px",ease:Elastic.easeOut});
+	   	   //动画效果，Elastic弹性
+	   	   ocont.innerHTML=event.target.dataset.content;
+	   	   //在页面显示内容
+	   }
+	   function close () {
+	   	   owin.style.display="none";
+	   	   TweenMax.to(owin,2,{width:"0px",height:"0px",ease:Elastic.easeOut});
+ 
+	   }
+	</script>
+</html>

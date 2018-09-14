@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style type="text/css">
+		body{
+			background: black;
+		    overflow: hidden;
+		}
+		#title{
+			color: white;
+			position: absolute;
+			top: 40%;
+			left:40%;
+			font-size: 1.6em;
+		}
+		.snow {
+				position: absolute;
+				background-color: #fff;
+				border-radius: 100%;
+			}
+	</style>
+	<body>
+		<div id="title">
+			<h1>happy holidays</h1>
+		</div>
+		<script type="text/javascript">
+			(function () {
+				var winW=window.innerWidth;
+				var winH=window.innerHeight;
+				var num=500;
+				var snowarray=new Array();
+				function random (min,max,isInt) {
+					var a=min+Math.random()*(max-min);
+					return isInt ? parseInt(a) : a;
+				}
+				function snow () {
+					this.init();
+					this.draw();
+				}
+				snow.prototype.init=function() {
+					this.x=random(0,winW,true);//窗口x的宽
+					this.y=random(-winH,0,true);//窗口y的高
+					this.size=random(0,10,true);//雪花的大小尺寸
+					this.alpha=random(0.1,1);//雪花的透明度
+				    this.wind=random(-2,2);//风，改变x的值
+				    this.speed=random(0.2,3);//速度，改变y的值
+				}
+				snow.prototype.draw=function () {
+					this.o=document.createElement("div");//创建一个div元素（类）作为雪花
+					this.o.className="snow";//类取名为snow
+				    document.body.appendChild(this.o);//在body里添加这个元素
+				    this.o.style.width=this.o.style.height=this.size+"px";//雪花的大小
+				    this.o.style.opacity=this.alpha;//雪花的透明度
+				      this.o.style.left=this.x+"px";
+					this.o.style.top=this.y+"px";//初始化时雪花的随机位置
+				}
+				snow.prototype.update=function () {
+						this.x+=this.wind;//更新雪花的位置，给雪花加上风和速度
+					  this.y+=this.speed;
+					  this.o.style.left=this.x+"px";
+					this.o.style.top=this.y+"px";
+					if(this.y>winH){
+						this.init();//如果雪花的y值大于屏幕的y值就初始化
+					}
+				}
+				for(var i=0;i<num;i++){
+					var s=new snow();//snow是一个雪花，定义s=snow
+					snowarray.push(s);//（雪花数组）后面加上s   循环num次，添加num个雪花
+				}
+				
+				(function () {
+					for(var i=0;i<snowarray.length;i++){
+						snowarray[i].update();//num个雪花的下落（动作），snowarray里有num个雪花
+					}
+					requestAnimationFrame(arguments.callee);//重复雪花的下落，与setInterval有相同的作用
+				}());
+			}());
+		</script>
+	</body>
+</html>

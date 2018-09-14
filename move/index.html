@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>动画效果</title>
+		<link rel="icon shortcut" href="img/ico.ico">
+	</head>
+	<style type="text/css">
+		.note{
+			position: relative;
+			border: 1px solid #000;
+		    width: 500px;
+		    height: 500px;
+		
+		}
+		.note .text{
+			position: absolute;
+			left: 50px;
+			top: 50px;
+			width: 30px;
+			height: 20px;
+			size: 100%;
+			animation: abc 5s infinite;
+		}
+		@keyframes  abc{
+			from{transform: translate(-10px) rotate(0deg);}
+			10%{transform: translate(0px) rotate(30deg);}
+			20%{transform: translate(0px) scale(1.5) rotate(360deg);}
+			30%{transform: translate(30px) rotate(0deg);}
+			40%{transform: translate(20px) scale(3) rotate(3600deg);}
+			50%{transform: translate(50px) rotate(60deg);}
+			60%{transform: translateY(180px);}
+			80%{transform: translateY(50px) rotate(0deg);}
+			90%{transform: translate(0px) rotate(90deg);}
+			100%{transform: translate(0px) scale(2) rotate(0deg);}
+		}
+	</style>
+	<body>
+	<nav class="note clearfix">
+			<nav class="text clearfix">
+		     <img src="img/ico.ico"/>
+	        </nav>
+	</nav>
+
+	</body>
+</html>

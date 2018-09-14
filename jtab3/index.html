@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+	</head>
+	<style type="text/css">
+		body {
+			height: 250px;
+			width: 250px;
+			margin: 0 auto;
+			text-align: center;
+		}
+		
+		#content {
+			height: 200px;
+			width: 200px;
+		}
+		
+		#content {
+			height: 200px;
+			width: 200px;
+			margin: 0 auto;
+			overflow: hidden;
+		}
+		
+		#content div {
+			
+			height: 200px;
+			width: 200px;
+			display: none;
+			background-color: red;
+		}
+		
+	
+	</style>
+
+	<body>
+		<h1>温馨提示：随意点</h1>
+		<div id="k">
+			<input type="button" name="1" id="1" value="1" />
+			<input type="button" id="2" value="2" />
+			<input type="button" name="3" id="3" value="3" />
+			<input type="button" name="4" id="4" value="4" />
+			<input type="button" name="5" id="5" value="5" />
+		</div>
+		<div id="content">
+			<div id="1" style="background-color: green;">内容</div>
+			<div id="2" style="background-color: blue;">2</div>
+			<div id="3" style="background-color: red;">3</div>
+			<div id="4" style="background-color: gold;">4</div>
+			<div id="5" style="background-color: deepskyblue;">5</div>
+		</div>
+		<script type="text/javascript">
+			var obtns = document.querySelectorAll('#k input');
+			var ocont = document.querySelectorAll('#content div')
+			
+			
+			for(var i = 0; i < obtns.length; i++) {
+
+				obtns[i].addEventListener('click', (function(n) {
+
+					return function() {
+						for (var j=0;j<obtns.length;j++) {
+							if(j==n){
+								console.log(j);
+							ocont[j].style.display = "block";
+						}else if(j<n){
+							console.log(j);//同理
+							ocont[j].style.display="none";
+						}else if(j>n){
+							console.log(j);//因为for循环，当i=n传入，所有的小于n的j都会一个个显示出来
+							ocont[j].style.display="none";//此时每层j都不会显示出来都属于none形式
+						}
+						}
+						console.log(n);
+                       //ocont[n-1].style.display="none";
+                       
+						
+						//ocont[n+1].style.display="none";
+						console.log("你单击了第" + (n+1) + "个按钮")
+					}
+				})(i));//i实际参数  n形式参数
+
+			}
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>猜数字游戏</title>
+	</head>
+	<style type="text/css">
+		body{
+			background: url(img/2.jpg) no-repeat center center;
+			background-size: 100%;
+		}
+	  .all{
+	  	width: 250px;
+	  	height: 250px;
+	  	margin: 0 auto;
+	  }
+		#number{
+			height: 50px;
+			width: 250px;
+			margin: 50px auto;
+		}
+		#number h2{
+			padding-left: 40px;
+		}
+		#number #sure{
+			border-radius: 20px;
+		}
+		#number #num{
+			border-radius: 20px;
+			padding-left: 5px;
+		}
+       #time{
+       		border: none;
+			margin-left: 10px;
+			margin-top: 10px;
+			background: rgba(250,250,250,.5);
+       }
+		#area{
+			border: none;
+			margin-left: 10px;
+			
+			background: rgba(250,250,250,.5);
+		}
+	</style>
+	<body>
+		<div class="all">
+			<div id="number">
+			<h2>猜数字游戏</h2>
+			
+			<input type="number" name="num" id="num" placeholder="    0-10的整数" />
+			<input type="button" id="sure" value="确定" />
+			<textarea id="time" rows="1" cols="20"></textarea>
+			<textarea id="area" rows="10" cols="20"></textarea>
+			
+		</div>
+		
+		<script type="text/javascript">
+		
+		var osure=document.querySelector('#sure');
+		var oarea=document.querySelector('#area');
+		var otime=document.querySelector('#time');
+		var onum=document.querySelector('#num');
+		
+	    var numright=parseInt(Math.random()*10+1);
+	    var guesstime=6;
+	   
+		osure.addEventListener("click",clickit);
+		function clickit() {
+		   var num=onum.value; 
+		   otime.innerHTML="剩余次数"+guesstime+"";
+		   if(guesstime-->0) {
+		      if(num>numright) {
+				oarea.innerHTML="你是猪吗！！"+ num +"太大了";
+				onum.value="";
+				onum.focus();
+			   }else if(num<numright){
+				oarea.innerHTML="哇你比猪还笨！！！"+ num +"太小了";
+				onum.value="";
+				onum.focus();
+			   }else if(num=numright){
+				oarea.innerHTML="恭喜你，你比猪聪明";
+				closegame();
+				
+			   }else{
+				    oarea.innerHTML="滚，猪都比你聪明";
+			   }
+		      }
+		   if(guesstime<=0){
+		   	   oarea.innerHTML="对不起，你没机会证明你比猪聪明了";
+		   	   closegame();
+		   	   guesstime=0;
+		       }
+		   }
+		function closegame () {
+			    num.disabled=true;
+				
+		}
+	</script>
+	</body>
+</html>

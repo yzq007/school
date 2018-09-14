@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style type="text/css">
+		.zoomPic:nth-child(1) {
+			margin-left: 180px;
+		}
+		.zoomPic:nth-child(4) {
+			margin-left: 180px;
+		}
+		
+		.zoomPic {
+			width: 250px;
+		
+			margin: 100px 50px;
+			position: relative;
+		}
+		
+		.zoomer {
+			position: fixed;
+			border: 1px solid rgba(0, 0, 0, .1);
+			border-radius: 50%;
+			background-repeat: no-repeat;
+			z-index: 1;
+			transform: translate(-50%, -50%);
+			pointer-events: none;
+		}
+	</style>
+
+	<body>
+		<img src="img/6.jpg" class="zoomPic" />
+		<img src="img/7.jpg" class="zoomPic" />
+		<img src="img/FE.jpg" class="zoomPic" />
+		<img src="img/6.jpg" class="zoomPic" />
+		<img src="img/7.jpg" class="zoomPic" />
+		<img src="img/FE.jpg" class="zoomPic" />
+	</body>
+	<script type="text/javascript">
+		(function() {
+			var ratio =[];
+			var zoom = document.querySelectorAll('.zoomPic');
+			if(zoom.length == 0) {
+				return false;
+			}
+           //创建一个div取类名为zoomer并添加到html中
+			var zoomer = document.createElement('div');
+			zoomer.className = 'zoomer';
+			document.body.appendChild(zoomer);
+
+			for(var i = 0; i < zoom.length; i++) {
+
+				zoom[i].addEventListener("load", (function(n) {
+					return function() {
+						ratio[n] = zoom[n].naturalWidth / zoom[n].width;
+						
+						console.log(ratio[n]);
+					}
+				})(i));
+
+				zoom[i].addEventListener("mousemove", (function(n) {
+					return function() {
+
+						var event = event || window.event;
+						var target = event.target || event.srcElement;
+						//target事件源，event事件
+						var cx = event.clientX;
+						var cy = event.clientY;
+					    //console.log("相对于浏览器可视区域左上角的值"+event.clientX,event.clientY);
+						var x = event.offsetX || event.clientX;
+						var y = event.offsetY || event.clienty;
+						//console.log("相对于目标事件的值"+event.offsetX,event.offsetY);
+						var w = 100;
+						var h = 100;
+						zoomer.style.width = w + "px";
+						zoomer.style.height = h + "px";
+						zoomer.style.left = cx + "px";
+						zoomer.style.top = cy + "px";
+						//cx,cy放大镜在浏览器中的位置   x,y放大镜背景图片和自身图片的位置关系
+						zoomer.style.backgroundImage = 'url(' + target.src + ')';
+						zoomer.style.backgroundPosition = (-ratio[n] * x + w/2) + "px " + (-ratio[n] * y + h/2) + "px";
+						zoomer.style.display = "block";
+					}
+				})(i));
+
+				zoom[i].addEventListener("mouseout", function() {
+					zoomer.style.display = "none";
+				});
+			}
+
+		})();
+	</script>
+
+</html>

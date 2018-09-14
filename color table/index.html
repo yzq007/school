@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>随机背景图表</title>
+	</head>
+	<style type="text/css">
+		#back{
+			border: 1px solid rgba(0,0,0,.2);
+			height: 400px;
+			width: 800px;
+			margin: 0 auto;
+		}
+		#color{
+			height: 300px;
+			width: 600px;
+			margin: 50px auto;
+			border: 1px solid rgba(0,0,0,.2);
+			border-collapse: collapse;
+		}
+		#color td{
+			border: 1px solid rgba(0,0,0,.2);
+			text-align: center;
+		}
+		h1{
+			text-align: center;
+		}
+	
+	</style>
+	<body>
+		<h1 id="h">随机背景图表</h1>
+		<div id="back">
+			<table id="color">
+			<tr>
+				<td>1</td>
+				<td>2</td>
+				<td>3</td>
+				<td>4</td>
+				<td>5</td>
+				<td>6</td>
+				<td>7</td>
+				<td>8</td>
+				<td>9</td>
+				<td>10</td>
+			</tr>
+			<tr>
+				<td>1</td>
+				<td>2</td>
+				<td>3</td>
+				<td>4</td>
+				<td>5</td>
+				<td>6</td>
+				<td>7</td>
+				<td>8</td>
+				<td>9</td>
+				<td>10</td>
+			</tr>
+			<tr>
+				<td>1</td>
+				<td>2</td>
+				<td>3</td>
+				<td>4</td>
+				<td>5</td>
+				<td>6</td>
+				<td>7</td>
+				<td>8</td>
+				<td>9</td>
+				<td>10</td>
+			</tr>
+			<tr>
+				<td>1</td>
+				<td>2</td>
+				<td>3</td>
+				<td>4</td>
+				<td>5</td>
+				<td>6</td>
+				<td>7</td>
+				<td>8</td>
+				<td>9</td>
+				<td>10</td>
+			</tr>
+			<tr>
+				<td>1</td>
+				<td>2</td>
+				<td>3</td>
+				<td>4</td>
+				<td>5</td>
+				<td>6</td>
+				<td>7</td>
+				<td>8</td>
+				<td>9</td>
+				<td>10</td>
+			</tr>
+			<tr>
+				<td>1</td>
+				<td>2</td>
+				<td>3</td>
+				<td>4</td>
+				<td>5</td>
+				<td>6</td>
+				<td>7</td>
+				<td>8</td>
+				<td>9</td>
+				<td>10</td>
+			</tr>
+			<tr>
+				<td>1</td>
+				<td>2</td>
+				<td>3</td>
+				<td>4</td>
+				<td>5</td>
+				<td>6</td>
+				<td>7</td>
+				<td>8</td>
+				<td>9</td>
+				<td>10</td>
+			</tr>
+			<tr>
+				<td>1</td>
+				<td>2</td>
+				<td>3</td>
+				<td>4</td>
+				<td>5</td>
+				<td>6</td>
+				<td>7</td>
+				<td>8</td>
+				<td>9</td>
+				<td>10</td>
+			</tr>
+			<tr>
+				<td>1</td>
+				<td>2</td>
+				<td>3</td>
+				<td>4</td>
+				<td>5</td>
+				<td>6</td>
+				<td>7</td>
+				<td>8</td>
+				<td>9</td>
+				<td>10</td>
+			</tr>
+			<tr>
+				<td>1</td>
+				<td>2</td>
+				<td>3</td>
+				<td>4</td>
+				<td>5</td>
+				<td>6</td>
+				<td>7</td>
+				<td>8</td>
+				<td>9</td>
+				<td>10</td>
+			</tr>
+		</table>
+		</div>
+		
+		<script type="text/javascript">
+			var oback=document.getElementById("back");
+			var str="1.jpg|2.jpg|3.jpg|";
+			var atr=str.split("|");
+			var num=parseInt(Math.random()*3);
+			console.log(num);
+			oback.style.backgroundImage="url(img/"+atr[num]+")";
+			
+			var ocolor=document.getElementById("color");
+			var otd=document.querySelectorAll("td");
+			for(i in otd){
+				otd[i].style.background="hsla("+i*2+",50%,50%,0.5)";
+			}
+		</script>
+	</body>
+</html>

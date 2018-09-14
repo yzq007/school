@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style type="text/css">
+		.menuContainer{
+			border: 1px solid #333;
+			width: 400px;
+			padding: 2px 2px 2px 2px;
+	        margin-left: 38%;
+	        margin-top: 5%;
+	        background: #00ffff;
+	        text-align: center;
+		}
+		.menu{
+			padding: 0;
+			margin: 0;
+			overflow: hidden;
+		}
+		.menu li{
+			list-style-type: none;
+			font-size: 12px;
+			line-height: 18px;
+		}
+		.menu li a{
+			text-decoration: none;
+			color: #333;
+		}
+	</style>
+	<body>
+		<div class="menuContainer">
+			<ul class="menu">
+				<li><a href="index2.html">AAAAAAAAAA</a></li>
+				<li><a href="index2.html">BBBBBBBBBB</li>
+				<li><a href="index2.html">CCCCCCCCCC</li>
+				<li><a href="index2.html">DDDDDDDDDD</li>
+				<li><a href="index2.html">EEEEEEEEEE</li>
+				<li><a href="index2.html">FFFFFFFFFF</li>
+			</ul>
+		</div>
+		<script type="text/javascript">
+			var omenu=document.querySelector(".menu");
+			var omenuitem=document.querySelectorAll(".menu li");
+			
+			var itemheight=omenuitem[0].offsetHeight;
+//			offsetHeight获取元素的高度
+			//设置单个li高度为可显示高度
+			var n=2;
+			var totalheight=itemheight*n;
+			//可以显示两个li的高度
+			var runflag=true;
+			//定义runflage为true
+			 for (var i=0;i<omenuitem.length;i++) {
+			 	omenuitem[i].innerHTML=(i+1)+"."+omenuitem[i].innerHTML;
+			 }
+			 //为每个li前面增加序号与.
+			 omenu.style.height=totalheight+"px";
+			 //设置一个可以显示两个li的窗口
+			 omenu.innerHTML+=omenu.innerHTML;
+			 //俩个menu的高
+			omenu.addEventListener("mouseover",function() {
+			 	runflag=false;
+			 	//鼠标进入停止运行
+			 });
+			omenu.addEventListener("mouseout",function() {
+			 	runflag=true;
+			 	//鼠标退出   滚动
+			 });
+			 
+			 function run () {
+			 	var stop=runflag==false;
+			 	//定义stop停止滚动
+			    if(!stop){
+//			    	omenu.scrollTop++;
+//                   omenu.scrollTop++;只能循环两次
+
+			    omenu.scrollTop==omenu.scrollHeight/2?omenu.scrollTop=0:omenu.scrollTop++;
+			    //条件表达式，活动到底复原(=0)，否则继续滚动(++)
+			    //omenu.scrollTop 是一个整数，即omenu的内容向上滚动的像素数。
+			    }
+			  //  如果 omenu.scrollTop 等于 omenu.scrollHeight/2算出来这个值，
+			  //那么omenu.scrollTop等于 0，否则omenu.scrollTop++滚动
+			    setTimeout(run,omenu.scrollTop%totalheight==0?1000:10);
+			    console.log("scrollTop:"+omenu.scrollTop);
+			    console.log("totalheight:"+totalheight);
+			   
+			    
+			   //可视窗口除余两个li的窗口是否为0，为0设置每1000运行一次，不是设置为10
+			 } 
+			 setTimeout(run,1000);
+			 
+			// 设置没1000运行一次run
+		</script>
+	</body>
+</html>

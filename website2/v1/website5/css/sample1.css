@@ -1,0 +1,470 @@
+/*
+ 基础设置
+ * */
+*{
+	box-sizing: border-box;
+	margin: 0px;
+	padding: 0px;
+	color: #fff;
+}
+.clearfix::after{
+	clear: both;
+	display: block;
+	content: "";
+}
+ul{
+	margin-top: 20px;
+	list-style-type: none;
+}
+a{
+	text-decoration: none;
+	color: #fff;
+}
+.container{
+	max-width: 1200px;
+	margin: auto;
+}
+body{
+	min-height: 1400px;
+	font-family: "微软雅黑";
+}
+/*
+ 图标文字特殊字体
+ * */
+span{
+	font-family: 'Droid Serif', serif;
+}
+/*
+header部分
+ * */
+header{
+	width: 100%;
+	padding: 12px;
+	background-color: rgba(0,0,0,0);
+	position: fixed;
+	transition:background-color.5s,padding.5s;
+	z-index: 10;
+}
+header.on{
+	padding: 10px 0px;
+	background-color: rgba(0,0,0,.6);
+}
+header .logo{
+	float: left;
+}
+header .logo img{
+	display: inline-block;
+	vertical-align: middle;
+}
+header .topMenu{
+	float: right;
+}
+header .topMenu ul li{
+	float: left;
+	margin-right: 40px;
+}
+/*
+ .active 是类
+ * */
+header .topMenu ul li:hover a,
+header .topMenu ul li.active a{
+	color: #339BEB;
+}
+header .topMenu ul a{
+	text-shadow: 1px 1px 1px rgba(0,0,0,.2);
+}
+header .topMenu ul a:hover{
+	color: #339BEB;
+}
+header .logo span{
+	font-size: 3em;
+	vertical-align: middle;
+}
+
+/*
+ banner属性部分
+ * */
+
+/*
+ banner 背景图片
+ * */
+.banner{
+	min-height: 880px;
+	background: url(../img/banner.jpg) no-repeat center top;
+	background-size: cover;
+}
+/*
+ 文字居中与效果
+ * */
+/*
+//块元素居中
+ .banner{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+	text-align: center;
+	text-shadow: 1px 1px 1px rgba(0,0,0,.8);
+}
+ * */
+.cbanner{
+	display: block;
+	position: absolute;
+	max-width: 800px;
+	height: 30px;
+	line-height: 30px;
+	top: 0px;
+	right: 0px;
+	bottom: 0px;
+	left: 0px;
+	margin: 260px auto;
+	text-align: center;
+	text-shadow: 1px 1px 1px rgba(0,0,0,.8);
+} 
+.cbanner h2{
+	font-size: 2em;
+	margin-bottom: 30px;
+	margin-top: 80px;
+}
+.cbanner h2 span{
+	color: #339BEB;
+}
+.cbanner p i{
+	font-style: normal;
+	color: #000;
+	padding: 5px 1px;
+    background-color:rgba(255,255,255,.5);
+    text-shadow: none;
+}
+/*
+ about 部分
+ * */
+section h2+p{
+	text-align: center;
+}
+.about{
+	min-height: 500px;
+}
+.about h2{
+	color: #000;
+	margin-top: 80px;
+	text-align: center;
+	padding-bottom: 18px;
+}
+.about p{
+	color: #000;
+	margin-bottom: 90px;
+	
+}
+.about img{
+	float: left;
+	width: 40%;
+	height: auto;
+	margin-bottom: 50px;
+	margin-left: 70px;
+}
+.about .note{
+	float: right;
+	margin-right: 130px;
+}
+.about .note p{
+	margin: 0px;
+	padding-bottom: 15px;
+}
+.about .note p:nth-last-of-type(1){
+	padding: 20px 0px;
+		margin-right: 440px;
+}
+.about .note ol{
+	counter-reset: licounter;
+}
+/*计数器重置
+ * */
+.about .note li{
+	list-style: none;
+	color: #000;
+	padding: 8px 0px;
+	/*
+	 计数器的改变
+	 * */
+	counter-increment: licounter;
+}
+/*
+ 计数器的使用
+ * */
+.about .note li::before{
+	content: counter(licounter);
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+	line-height: 20px;
+	text-align: center;
+	border: 1px dashed #000;
+    border-radius: 20px;  
+    margin-right: 15px;
+   transition: transform.8s;
+}
+.about .note li:hover::before{
+	/*
+	 序号移动特效 水平旋转移动
+	 * */
+	transform: translate(15px) rotate(720deg);
+}
+/*
+ 我们的服务
+ * */
+.service{
+	min-height: 620px;
+	/*
+	 background:url(../img/banner2.jpg) no-repeat center center;图片不平铺 水平位置居中 垂直位置居中
+	 background:url(../img/banner2.jpg) no-repeat 100% 100%;图片不平铺 水平位置100% 垂直位置100%
+	 background 复合属性 集所有属性为一身
+	 background-image 背景图片写不了其他属性
+	 * */
+	background: url(../img/banner2.jpg) no-repeat 100% 100%;
+	background-size: cover;
+}
+.sv h2{
+	text-align: center;
+	padding-top: 65px;
+}
+.sv p{
+	padding-top: 15px;
+	padding-bottom: 60px;
+}
+.sv .svcontent li::after{
+	content: "";
+	display: table;
+	clear: both;
+}
+.sv .svcontent li{
+	width: 48%;
+	float: left;
+	height: 100px;
+	text-align: right;
+}
+.sv .svcontent li:nth-child(2n){
+	float: right;
+	text-align: left;
+	
+}
+.sv .svcontent li:nth-child(2n) i{
+		padding: 1px 30px 1px 0px;
+	    float: left;
+	    
+}
+.sv .svcontent li:hover:nth-child(2n) i{
+	transform: scale(1.5) rotate(-5deg);
+}
+.sv .svcontent h3{
+    text-align: right;
+}
+.sv .svcontent li i{
+	padding: 1px 0px 1px 30px;
+	float: right;
+	   transition: transform.5s,color.5s;
+}
+.sv .svcontent li:nth-child(2n) h3{
+	text-align: left;
+}
+.sv .svcontent li:hover i{
+	transform: scale(1.5) rotate(5deg);
+	color: #00ffff;
+	cursor: pointer;
+}
+/*
+ 案列开始实现
+ * */
+.case{
+	min-height: 860px;
+
+}
+.case h2{
+	text-align: center;
+	color: #000;
+	padding: 10px 0px;
+	margin-top: 60px;
+}
+.case p a{
+	font-style: italic;
+	color: #339BEB;
+	font-size: 18px;
+}
+.case p{
+	text-align: center;
+	color: #000;
+	padding: 10px 0px;
+	margin-bottom: 60px;
+}
+.case .contentcase figure{
+	float: left;
+	width: 20%;
+	height: auto;
+	margin: 10px calc(18% / 8);
+	position: relative;
+	overflow: hidden;
+	
+}
+/*
+ * width: 18%;
+ margin: calc(28% / 8)  图片宽度 18% 四张图片margin 剩余28% 6部分平分
+ transition（过渡） 用于同一个元素   从为变化到变化所以用于同一个对象
+ * */
+.case .contentcase figure img{
+	width: 100%;
+	height: auto;
+	transition: transform .5s;
+}
+.case .contentcase figure:hover img{
+	transform: scale(1.2) rotate(3deg);
+}
+.case .contentcase figure figcaption{
+	width: 90%;
+	height: 52%;
+	position: absolute;
+	color: #000;
+	z-index: 10;
+	background-color: rgba(255,255,255,.6);
+	left: 12px;
+	bottom: 20px;
+}
+.case .contentcase figure figcaption h3{
+	display: inline-block;
+	color:#000;
+	position: absolute;
+	top: 30px;
+	right: 10px;
+	margin-right: 10px;
+	margin-bottom: 20px;
+}
+.case .contentcase figure figcaption p{
+	font-size: 12px;
+	text-align: left;
+
+}
+.case .contentcase figure figcaption .month{
+	width: 40px;
+	height: 30px;
+	line-height: 30px;
+    text-align: center;
+	font-size: 12px;
+	color: #000;
+	background-color:#339BEB;
+	margin: 8px 0px 0px 8px;
+	padding: 0px;
+}
+.case .contentcase figure figcaption .year{
+	
+	width: 40px;
+	height: 30px;
+	line-height: 30px;
+	text-align: center;
+	font-size: 12px;
+	color: #000;
+	background-color:rgba(255,255,255,.8);
+	margin: 0px 0px 0px 8px;
+	padding: 0px;
+}
+/*
+ span 代表字体格式
+ * */
+.case .contentcase figure figcaption .v{
+	position: absolute;
+    background-color: rgba(0,0,0,.2);
+    bottom: 0px;
+    width: 100%;
+    text-align: right;
+    height: 20px;
+}
+.case .contentcase figure figcaption .v span,
+.case .contentcase figure figcaption .v i{
+	padding-right: 5px;  
+	font-size: 0.8em;
+	color: #000;
+}
+/*
+ 联系我们
+ * */
+.vcontact{
+	min-height: 480px;
+    background: url(../img/android-1869510_1920.jpg) no-repeat center top;
+	background-size: cover;
+}
+.vcontact h2{
+	text-align: center;
+	padding-top: 60px;
+	padding-bottom: 10px;
+}
+.vcontact p{
+	margin-top: 12px;
+}
+.zcontact{
+	width: 100%;
+}
+.zcontact .left{
+	margin-top: 16px;
+	margin-left: 260px;
+	width: 35%;
+	float: left;	
+	font-size: 0.9em;
+}
+.zcontact .left p:nth-child(1){
+	margin-top: 80px;
+	padding:1px;
+}
+.zcontact .left p:nth-child(2){
+	padding-top:1px;
+	margin-bottom: 38px;
+}
+.zcontact .left ul li{
+	padding: 5px 2px;
+}
+.zcontact .left ul li i{
+	padding-right: 10px;
+}
+.zcontact .right{
+	width: 38%;
+	float: right;
+	margin-right: 80px;
+	margin-top: 80px;
+}
+.zcontact .right input,
+.zcontact .right textarea{
+	 width: 100%;
+	 height: 38px;
+	 border: none;
+	 outline: none;
+	 border-radius: 10px;
+	 padding: 10px 0px;
+	 margin: 10px 0;
+	 background-color: rgba(255,255,255,.6);
+   font-size: 0.8em;
+}
+.zcontact .right textarea{
+	color: #000;
+	height: 50px;
+	width: 100%;
+}
+/*
+ ::-webkit-input-placeholder
+  修改输入框placeholder文字默认颜色-webkit-input-placeholder
+  不过我还是不知道是什么原理
+ * */
+::-webkit-input-placeholder{
+	color: #000;
+	 width: 100%;
+	padding-left: 15px;	
+}
+::-moz-placeholder{
+	color: #000;
+	padding-left: 15px;
+}
+.zcontact .right input:nth-last-child(1){
+	color: #000;
+	letter-spacing: 2px;
+	transition: font-size.5s;
+	cursor: pointer;
+}
+.zcontact .right input:hover:nth-last-child(1){
+	font-size: 1.2em;
+}

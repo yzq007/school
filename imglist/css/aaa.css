@@ -1,0 +1,93 @@
+.clearfix::after{
+	content: "";
+	display: table;
+	clear:both;
+}
+.imglist *,
+.imglist ::before,
+.imglist::after{
+	box-sizing: border-box;
+	box-sizing: border-box;
+	-webkit-transform: all.8s ease;
+	-moz-transform: all.8s ease;
+	-ms-transform: all.8s ease;
+	-o-transform: all.8s ease;
+	transform: all.8s ease;
+}
+.imglist{
+	max-width: 1200px;
+	margin: auto;
+}
+.imglist figure{	
+	float:left;
+	width: 30%;
+	overflow: hidden;
+	margin: calc(10%/6);
+	border: 10px solid rgba(255,255,255,1);
+	box-shadow: 0px 0px 4px 0px rgba(0,0,0,.5);
+	transition: all.8s;
+	position: relative;
+	cursor: pointer;
+}
+.imglist figure figcaption{
+	position: absolute;
+	right:20%;
+	left: 20%;
+	top:35%;
+	bottom: 35%;
+	 margin:auto;
+	 color:#fff;
+	 transition: all.8s;
+	 z-index: 2;
+	 border:1px solid #FFFFFF;
+	 text-align: center;
+	 border-bottom: none;
+}
+.imglist figure figcaption::before,
+.imglist figure figcaption::after{
+	position: absolute;
+	content: "";
+	width: 50%;
+	height: 1px;
+	background-color: white;
+	bottom: 0;
+	
+}
+.imglist figure figcaption::after{
+	left: 0;
+}
+.imglist figure img{
+	width: 100%;
+	vertical-align: top;
+	-webkit-transform: scale(1) rotate(0deg);
+	-moz-transform: scale(1) rotate(0deg);
+	-ms-transform: scale(1) rotate(0deg);
+	-o-transform: scale(1) rotate(0deg);
+	transform: scale(1) rotate(0deg);
+	transition: all.8s;
+}
+.imglist figure:hover img{
+	-webkit-transform: scale(1.5) rotate(20deg);
+	-moz-transform: scale(1.5) rotate(20deg);
+	-ms-transform: scale(1.5) rotate(20deg);
+	-o-transform: scale(1.5) rotate(20deg);
+	transform: scale(1.5) rotate(20deg);
+}
+.imglist figure figcaption::before{
+	right:0;
+}
+.imglist figure:hover figcaption::before,
+.imglist figure:hover figcaption::after{
+	width: 20%;	
+}
+//在figcaption前后添加20%的宽度
+.imglist figure figcaption h3{
+	font-size:1.2em;
+}
+.imglist figure figcaption p{
+	opacity: 0;
+	transition: all.8s;
+}
+.imglist figure figcaption:hover p{
+	opacity: 1;
+}

@@ -1,0 +1,56 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>缓冲运动</title>
+	</head>
+	<style>
+		.btn{
+			width: 100px;
+			height: 50px;
+			line-height: 50px;
+			text-align: center;
+			border: 1px solid #000;
+		}
+		.box{
+			margin-top: 10px;
+			height:100px;
+			width: 100px;
+			background-color: red;
+			position: absolute;
+			left: 0;
+		}
+		#xian{
+			width: 1px;
+			height: 300px;
+			position: absolute;
+			left: 300px;
+			background-color: #000;
+		}
+	</style>
+	<body>
+		<div class="btn" onclick="startmove(300)">开始运动</div>
+		<div class="box" id="box"></div>
+		<span id="xian">
+		</span>
+		
+		<script type="text/javascript">
+			var timer;
+			function startmove(target){
+				var oBox = document.getElementById('box');
+				clearInterval(timer);
+				timer = setInterval(function(){
+					var isSpeed = (target - oBox.offsetLeft)/8;
+					isSpeed = isSpeed>0?Math.ceil(isSpeed):Math.floor(isSpeed);
+					if(oBox.offsetLeft == target){
+						clearInterval(timer);
+					}else{
+						oBox.style.left = oBox.offsetLeft + isSpeed + 'px';
+						
+					}
+				},30);
+			}
+		</script>
+	</body>
+</html>

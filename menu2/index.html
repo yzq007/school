@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>menu案列</title>
+		<link rel="shortcut icon" type="text/css" href="img/icon.ico"/>
+		<link rel="stylesheet" type="text/css" href="css/animate.css"/>
+		<link rel="stylesheet" type="text/css" href="css/font-awesome-4.7.0/css/font-awesome.css"/>
+	</head>
+	<style type="text/css">
+		
+		.tmenu{
+			height: 50px;
+			line-height: 50px;
+			background: #00ffff;
+			border-radius: 6px;
+			
+		}
+		
+		.cont{
+			width: 150px;
+			margin: 0px;
+			padding: 0px;
+		
+			background: #00ffff;
+			border-radius: 6px;
+		}
+		.cont .menu{
+			margin-left: 15px;
+		}
+		ul{
+			display: none;
+			list-style: none;
+		    padding-left: 15px;
+		}
+		ul li{
+			padding: 5px;
+			
+		}
+		ul li ul{
+		   display: none;
+		}
+		.btn{
+			transition: transform .5s;
+			padding: 15px;
+		}
+		.jian{
+			padding: 5px;
+			transition: transform .5s;
+		}
+	</style>
+	<body>
+		<div class="tmenu animated bounceIn">
+			<i class="fa fa-reorder btn"></i>Menu
+		
+		</div>
+		<div class="cont">
+			<ul class="menu">
+				<li class="lin">
+				案列1<i class="fa fa-angle-right jian"></i>
+				<ul>
+					<li>案列1</li>
+					<li>案列2</li>
+					<li>案列3</li>
+					<li>案列4</li>
+				</ul>	
+				</li>
+				<li class="lin">
+				案列2<i class="fa fa-angle-right jian"></i>
+				<ul>
+					<li>案列1</li>
+					<li>案列2</li>
+					<li>案列3</li>
+					<li>案列4</li>
+				</ul>	
+				</li>
+				<li class="lin">
+				案列3<i class="fa fa-angle-right jian"></i>
+				<ul>
+					<li>案列1</li>
+					<li>案列2</li>
+					<li>案列3</li>
+					<li>案列4</li>
+				</ul>	
+				</li>
+				<li class="lin">
+				案列4<i class="fa fa-angle-right jian"></i>
+				<ul>
+					<li>案列1</li>
+					<li>案列2</li>
+					<li>案列3</li>
+					<li>案列4</li>
+				</ul>	
+				</li>
+			</ul>
+		</div>
+		<script type="text/javascript">
+			var otmenu=document.querySelector(".tmenu i");
+			var omenu=document.querySelector(".menu");
+			var obtn=document.getElementsByClassName("btn");
+		
+			var oli=document.querySelectorAll(".menu .lin");
+			var oul=document.querySelectorAll(".menu li ul")
+			
+			var ojian=document.getElementsByClassName("jian");
+			otmenu.addEventListener("click",function () {
+				if(omenu.style.display=="none"){
+					omenu.style.display="inline-block";
+					omenu.classList.add("animated");
+					omenu.classList.add("bounceInLeft");
+				    obtn[0].style.transform="rotate(90deg)";
+				}else{
+					omenu.style.display="none";
+					omenu.classList.remove("animated");
+					omenu.classList.remove("bounceInLeft");
+					 obtn[0].style.transform="rotate(0deg)";
+				}
+				
+			})
+			for (var i=0;i<4;i++) {
+				oli[i].addEventListener("click",(function (n) {
+					return function () {
+//						console.log(n);
+//						console.log(i);                      
+						if(oul[n].style.display=="none"){
+							oul[n].style.display="block";
+							oul[n].classList.add("animated");
+					oul[n].classList.add("bounceInLeft");
+							ojian[n].style.transform="rotate(90deg)";
+						}else{
+							oul[n].classList.remove("animated");
+					oul[n].classList.remove("bounceInLeft");
+							oul[n].style.display="none";
+							ojian[n].style.transform="rotate(0deg)";
+						}
+					}
+				;
+			})(i));
+			}
+			
+		</script>
+	</body>
+</html>

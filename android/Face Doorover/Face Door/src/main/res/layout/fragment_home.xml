@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:background="@color/bg_white"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:weightSum="10"
+        android:background="#78bff5">
+        <ImageView
+            android:id="@+id/code"
+            android:layout_weight="1"
+            android:src="@drawable/code"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="28dp" />
+        <LinearLayout
+            android:id="@+id/search"
+            android:background="@drawable/shape"
+            android:layout_weight="8"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            >
+            <ImageView
+                android:id="@+id/searching"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:layout_gravity="center"
+                android:src="@drawable/searching"
+                android:layout_marginLeft="5dp"
+                />
+        </LinearLayout>
+        <ImageView
+            android:id="@+id/scanning"
+            android:layout_weight="1"
+            android:src="@drawable/scanning"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="28dp" />
+    </LinearLayout>
+
+    <include layout="@layout/home_carousel"
+        android:id="@+id/carousel"
+        android:layout_marginTop="50dp"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        ></include>
+    <include
+        android:id="@+id/view_flipper"
+        layout="@layout/home_flipper"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_marginTop="240dp"
+        ></include>
+
+
+    <LinearLayout
+        android:id="@+id/service"
+        android:layout_below="@id/view_flipper"
+        android:layout_width="match_parent"
+        android:layout_marginTop="5dp"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:id="@+id/servicetitle"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/title_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="服务提醒"
+                android:textSize="18dp"
+                android:textColor="#000"
+                android:layout_marginLeft="10dp"
+                />
+            <ListView
+            android:id="@+id/listview"
+                android:layout_marginTop="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        </ListView>
+        </LinearLayout>
+
+    </LinearLayout>
+</RelativeLayout>
