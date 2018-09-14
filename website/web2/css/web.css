@@ -1,0 +1,119 @@
+*{
+	box-sizing: border-box;
+}
+.clearfix::after{
+	content: "";s
+	display: table;
+	clear: both;
+}
+body{
+	color: #fff;
+	background: url(../img/samuel-scrimshaw-114346.jpg) no-repeat fixed;
+	min-height: 1200px;
+	background-size:100%;
+}
+a{
+	color: #fff;
+	text-decoration:none;
+}
+.logo img{
+	width: 80px;
+	height: auto;
+}
+.wrapper{
+	max-width: 1200px;
+	margin: 20px auto;
+	padding: 40px;
+}
+header{
+	position: relative;
+}
+h2{
+	font-size: 30px;
+	padding: 20px 0px 0px 0px;
+}
+ul{
+	list-style-type: none;
+	padding: 0px;
+}
+.list ul{
+	position: absolute;
+	right: 0;
+	top: 0;
+}
+.list ul li{
+float: left;
+margin: 20px 30px;
+}
+.list ul li a{
+	padding: 20px;
+	border: 1px solid transparent;
+	transition:color.8s,border.5s;
+}
+.list ul li:hover a{
+	color: #000;
+	border: 1px solid #fff;
+	background: rgba(0,0,0,.2);
+}
+.list a{
+	border-bottom: 1px dashed #fff;
+}
+.list a:hover{
+	border-bottom: 1px solid #fff;
+}
+.fav li{
+	height: 48px;
+	line-height: 48px;
+	width: 120px;
+	float: left;
+    background-color:rgba(100,100,200,.6);
+	text-align: center;
+	margin: 0px 65px 0px 0px;
+	cursor: pointer;
+	border-radius: 0px;
+	transition: background-color.5s,border-radius.6s;
+}
+.fav li:hover{
+	border-radius: 20px;
+	 background-color:rgba(100,100,200,.9);
+}
+.xmcontent h2{
+	margin-top: 100px;
+}
+.workl figure{
+	float: left;
+	width: 30%;
+	margin: calc(10% / 6);
+	margin-left: 0px;
+	position: relative;
+}
+.workl figure:nth-child(3n){
+	margin-right: 0px;
+}
+.workl img{
+	width: 250px;
+	height: 250px;
+	/*margin-left: -40px;*/
+	-webkit-filter: grayscale(0.8);
+	transition: -webkit-filter.5s, filter.5s;
+	cursor: pointer;
+}
+.workl figure:hover img{
+	-webkit-filter:grayscale(0);
+}
+.workl figure figcaption{
+	width: 90px;
+	height: 20px;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	right: 0px;
+	bottom: 0px;
+	margin: auto;
+	opacity: 0;
+	transition: opacity.5s;
+	z-index: 3;
+}
+.workl figure:hover figcaption{
+	opacity: 1;
+}
