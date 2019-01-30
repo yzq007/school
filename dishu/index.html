@@ -134,14 +134,14 @@
 	      	 	//清除点击地鼠点击事件
 	      	   console.log("地鼠");
 	      	 	oimg[i].removeEventListener("click",hhh,false);
-	      	 },4000);	
+	      	 },1000);	
 	      	 
 	    setTimeout(function () {
 	    	//过一秒以后执行
 	      	 	oimg[i].src="img/03.jpg";
 //	      	 	oimg[i].removeEventListener("click",hhh,false);
                console.log("笑");
-	      	 },100);	 
+	      	 },500);	 
 	      	 
 	      	 //点击地鼠事件
 	      	 function hhh(){
@@ -151,7 +151,7 @@
 	      	 }
 	      	 oimg[i].addEventListener("click",hhh,false);  
 	      	 
-	     ob=setTimeout("star()",500);   
+	     ob=setTimeout("star()",1000);   
 	    
 	     }; 
 	   
