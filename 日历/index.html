@@ -1,0 +1,429 @@
+
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>日历</title>
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			
+			html,body{
+				background: #fff;
+			}
+			
+			.rl_title {
+				position: relative;
+				background: rgba(0, 0, 0, .8);
+				color: #fff;
+				font-size: 25px;
+				text-align: center;
+				padding: 20px 0;
+			}
+			
+			.today_btn {
+				position: absolute;
+				right: 20px;
+				top: 50%;
+				transform: translateY(-50%);
+				font-size: 18px;
+			}
+			
+			.week_list {
+				display: flex;
+				align-items: center;
+				padding: 20px 0;
+			}
+			
+			.week_list li {
+				flex: 1;
+				list-style: none;
+				text-align: center;
+				color: #7d7d7d;
+				font-size: 15px;
+			}
+			
+			.week_list li:first-child,
+			.week_list li:last-child {
+				color: red;
+			}
+			
+			.monthDay_box {
+				display: flex;
+				flex-wrap: wrap;
+			}
+			
+			.weekDay_box {
+				display: flex;
+				flex-wrap: wrap;
+			}
+			
+			.day {
+				width: calc((100%)/7);
+				height: 20px;
+				padding: 20px 0;
+				text-align: center;
+				font-size: 15px;
+			}
+			
+			.day span {
+				display: block;
+				height: 20px;
+				width: 20px;
+				border-radius: 50%;
+				margin: auto;
+			}
+			
+			.day .today {
+				color: #fff;
+				background: #75b1ff;
+			}
+			
+			.day .nottodya {
+				color: #7D7D7D;
+				background: #fff;
+			}
+			
+			.btns div {
+				height: 30px;
+				background: yellow;
+				margin-bottom: 10px;
+			}
+			.none{
+				display: none;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="app">
+			<div class="rl_title">
+				{{currentYear}}-{{currentMonth
+				<10? "0"+currentMonth.toString():currentMonth}} <div class="today_btn" @click="getToday()">今天</div>
+		</div>
+		<ul class="week_list">
+			<li v-for="week in week_info">{{week}}</li>
+		</ul>
+		<div class="monthDay_box" v-if="type=='month'" v-swipedown="($event)=>vueTouch('down',$event)" v-swipeup="($event)=>vueTouch('up',$event)" v-swipeleft="($event)=>vueTouch('left',$event)" v-swiperight="($event)=>vueTouch('right',$event)">
+			<div class="day" v-for="(day,index) in days" key="index">
+				<span key="index" v-if="day.day.getMonth()+1!=currentMonth"></span><span key="index" v-else @click="selectThis(index)" :class="[day.day.getDate()==now_day&&day.day.getMonth()+1==now_month&&day.day.getFullYear()==now_year?'today':'']">{{day.day.getDate()}}</span>
+			</div>
+		</div>
+		<div class="weekDay_box" v-else="type=='week'" v-swipedown="($event)=>vueTouch('down',$event)" v-swipeup="($event)=>vueTouch('up',$event)" v-swipeleft="($event)=>vueTouch('left',$event)" v-swiperight="($event)=>vueTouch('right',$event)">
+			<div class="day" v-for="(day,index) in days" key="index">
+				<span key="index" v-if="day.day.getMonth()+1!=currentMonth" class="nottodya">{{day.day.getDate()}}</span><span key="index" v-else @click="selectThis(index)" :class="[day.day.getDate()==now_day&&day.day.getMonth()+1==now_month&&day.day.getFullYear()==now_year?'today':'']">{{day.day.getDate()}}</span>
+			</div>
+		</div>
+		</div>
+		<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+		<script src="js/touch.js"></script>
+		<script type="text/javascript">
+			var app = new Vue({
+				el: '.app',
+				data: {
+					week_info: ['日', '一', '二', '三', '四', '五', '六'],
+					currentYear: 0,
+					currentMonth: 0,
+					currentDay: 0,
+					days: [],
+					now_year: 0,
+					now_month: 0,
+					now_day: 0,
+					now_week: 0,
+					type: 'month'
+				},
+				created: function() {
+					var _this = this;
+					_this.getTodayInfo();
+				},
+				mounted: function() {
+					var _this = this;
+					_this.timeInit();
+				},
+				watch: {
+					type: function() {
+						var _this = this
+						_this.getTodayInfo();
+						_this.days = [];
+						_this.$nextTick(function() {
+							if(_this.type == "month") {
+								_this.timeInit();
+							} else {
+								_this.getWeekDay();
+							}
+						})
+
+					}
+				},
+				methods: {
+					//初始化日期数据-月
+					timeInit: function() {
+						var _this = this;
+						//初始化当前周
+						var str = this.formatDate(_this.currentYear, _this.currentMonth, 1);
+						var start_time = new Date(str); // 初始化时间为当月1号
+						var first_day_week = start_time.getDay();
+						if(first_day_week == 0) {
+							first_day_week = 7;
+						}
+
+						for(var i = first_day_week; i >= 0; i--) {
+							var d2 = new Date(str)
+							d2.setDate(d2.getDate() - i);
+							var dayobject = {}; //用一个对象包装Date对象  以便为以后预定功能添加属性
+							dayobject.day = d2;
+							_this.days.push(dayobject); //将日期放入data 中的days数组 供页面渲染使用
+						}
+
+						//其他周
+						var all = _this.getAllday(_this.currentYear, _this.currentMonth);
+						for(var i = 1; i < all; i++) {
+							var d2 = new Date(str)
+							d2.setDate(d2.getDate() + i);
+							var dayobject = {};
+							dayobject.day = d2;
+							_this.days.push(dayobject);
+						}
+					},
+					//获取今天的日期信息
+					getTodayInfo: function() {
+						var _this = this;
+						var now_date = new Date();
+						var now_year = now_date.getFullYear();
+						var now_month = now_date.getMonth();
+						var now_week = now_date.getDay();
+						var now_day = now_date.getDate();
+						_this.currentYear = now_year;
+						_this.currentMonth = now_month + 1;
+						_this.currentDay = now_day;
+						_this.now_year = now_year;
+						_this.now_month = now_month + 1;
+						_this.now_day = now_day;
+						_this.now_week = now_week;
+					},
+					//切换上个月
+					preMonth: function() {
+						var _this = this;
+						var d = new Date(_this.formatDate(_this.currentYear, _this.currentMonth, 1));
+						d.setDate(0);
+						if(_this.currentMonth == 1) {
+							_this.currentYear = d.getFullYear();
+						}
+						var new_time_str = _this.formatDate(d.getFullYear(), d.getMonth() + 1, 1);
+						var new_time = new Date(new_time_str)
+						this.getNewData(new_time.getFullYear(), new_time.getMonth() + 1, new_time.getDay(), new_time_str);
+					},
+					//切换下个月
+					nextMonth: function() {
+						var _this = this;
+						var d = null;
+						d = new Date(_this.formatDate(_this.currentYear, _this.currentMonth, 1));
+						d.setDate(35);
+						var new_time_str = _this.formatDate(d.getFullYear(), d.getMonth() + 1, 1);
+						var new_time = new Date(new_time_str)
+						this.getNewData(new_time.getFullYear(), new_time.getMonth() + 1, new_time.getDay(), new_time_str);
+					},
+					//生成新的日历数据-月
+					getNewData: function(year, month, first_day_week, str) {
+						var _this = this;
+						_this.days = [];
+						_this.currentYear = year;
+						console.log(year)
+						console.log(_this.now_year)
+						_this.currentMonth = month;
+						for(var i = first_day_week; i >= 0; i--) {
+							var d2 = new Date(str)
+							d2.setDate(d2.getDate() - i);
+							var dayobject = {}; //用一个对象包装Date对象  以便为以后预定功能添加属性
+							dayobject.day = d2;
+							_this.days.push(dayobject); //将日期放入data 中的days数组 供页面渲染使用
+						}
+
+						//其他周
+						var all = _this.getAllday(year, month);
+						for(var i = 1; i < all; i++) {
+							var d2 = new Date(str)
+							d2.setDate(d2.getDate() + i);
+							var dayobject = {};
+							dayobject.day = d2;
+							_this.days.push(dayobject);
+						}
+
+						_this.$nextTick(function() {
+							var oSpan = document.querySelectorAll('span');
+							if(_this.currentMonth != _this.now_month || _this.currentYear != _this.now_year) {
+								for(var i = 0; i < _this.days.length; i++) {
+									oSpan[i].style.background = "#fff";
+									oSpan[i].style.color = "#000";
+									if(oSpan[i].innerText == 1) {
+										oSpan[i].style.background = '#DCDCDC';
+										oSpan[i].style.color = '#fff';
+									}
+								}
+							} else {
+								for(var i = 0; i < _this.days.length; i++) {
+									oSpan[i].style.background = "#fff";
+									oSpan[i].style.color = "#000";
+									if(oSpan[i].innerText == _this.currentDay) {
+										oSpan[i].style.background = "#75B1FF";
+										oSpan[i].style.color = "#fff";
+									}
+								}
+							}
+						})
+					},
+					//生成新的日期数据-周
+					getWeekDay: function() {
+						var _this = this;
+						_this.days = [];
+						var d = new Date(_this.formatDate(_this.now_year, _this.now_month, _this.now_day))
+						var week_day = d.getDay();
+						if(week_day == 0) week_day = 7;
+						var str = _this.formatDate(_this.now_year, _this.now_month, _this.now_day);
+						for(var i = d.getDay(); i >= 0; i--) {
+							var day = new Date(str);
+							day.setDate(d.getDate() - i)
+							var dayobject = {};
+							dayobject.day = day;
+							_this.days.push(dayobject);
+						}
+						for(var j = 1; j <= 6 - week_day; j++) {
+							var day = new Date(str);
+							day.setDate(d.getDate() + j)
+							var dayobject = {};
+							dayobject.day = day;
+							_this.days.push(dayobject);
+						}
+					},
+					//切换到上周
+					preWeek: function() {
+						var _this = this;
+						var this_week_first_day = _this.days[0];
+						var str = _this.formatDate(this_week_first_day.day.getFullYear(), this_week_first_day.day.getMonth() + 1, this_week_first_day.day.getDate());
+						_this.days = [];
+						for(var i = 7; i >= 1; i--) {
+							var day = new Date(str);
+							day.setDate(day.getDate() - i);
+							var dayobject = {};
+							dayobject.day = day;
+							_this.days.push(dayobject);
+						}
+						if(_this.days[0].day.getMonth() != _this.days[6].day.getMonth()) {
+							_this.currentMonth = _this.days[6].day.getMonth() + 1;
+						} else {
+							_this.currentMonth = _this.days[0].day.getMonth() + 1;
+						}
+					},
+					//切换到下周
+					nextWeek: function() {
+						var _this = this;
+						var this_week_first_day = _this.days[6];
+						var str = _this.formatDate(this_week_first_day.day.getFullYear(), this_week_first_day.day.getMonth() + 1, this_week_first_day.day.getDate());
+						_this.days = [];
+						for(var i = 1; i <= 7; i++) {
+							var day = new Date(str);
+							day.setDate(day.getDate() + i);
+							var dayobject = {};
+							dayobject.day = day;
+							_this.days.push(dayobject);
+						}
+						if(_this.days[0].day.getMonth() != _this.days[6].day.getMonth()) {
+							_this.currentMonth = _this.days[0].day.getMonth() + 1;
+						} else {
+							_this.currentMonth = _this.days[6].day.getMonth() + 1;
+						}
+					},
+					//返回今天的日期
+					getToday: function() {
+						var _this = this;
+						if(_this.type == "month") {
+							_this.days = [];
+							_this.getTodayInfo();
+							_this.$nextTick(function() {
+								_this.timeInit();
+							})
+						} else {
+							_this.days = [];
+							_this.getTodayInfo();
+							_this.$nextTick(function() {
+								_this.getWeekDay();
+							})
+						}
+					},
+					//点击某一天
+					selectThis: function(index) {
+						var _this = this;
+						var oSpan = document.querySelectorAll('span');
+						if(_this.currentMonth != _this.now_month) {
+							for(var i = 0; i < _this.days.length; i++) {
+								oSpan[i].style.background = "#fff";
+								oSpan[i].style.color = "#000";
+							}
+							oSpan[index].style.background = '#DCDCDC';
+							oSpan[index].style.color = '#fff';
+						} else {
+							for(var i = 0; i < _this.days.length; i++) {
+								oSpan[i].style.background = "#fff";
+								oSpan[i].style.color = "#000";
+								if(oSpan[i].innerText == _this.currentDay) {
+									oSpan[i].style.background = "#75B1FF";
+									oSpan[i].style.color = "#fff";
+								}
+							}
+							oSpan[index].style.background = '#DCDCDC';
+							oSpan[index].style.color = '#fff';
+							if(oSpan[index].innerText == _this.currentDay) {
+								oSpan[index].style.background = "#75B1FF";
+								oSpan[index].style.color = "#fff";
+							}
+						}
+
+					},
+					//左右滑动-上下滑动
+					vueTouch: function(txt, event) {
+						var _this = this;
+						console.log(txt)
+						if(txt=='up'){
+							console.log('周')
+							_this.type='week'
+						}else if(txt=='down'){
+							console.log('月')
+							_this.type='month'
+						}else if(txt=='right'){
+							if(_this.type=='month'){
+								_this.preMonth();
+							}else{
+								_this.preWeek();
+							}
+						}else if(txt=='left'){
+							if(_this.type=='month'){
+								_this.nextMonth();
+							}else{
+								_this.nextWeek();
+							}
+						}
+					},
+					//获取天数
+					getAllday: function(year, month) {
+						var d = new Date(year, month, 0);
+						return d.getDate();
+					},
+					// 返回 类似 2018-03-08 格式的字符串
+					formatDate: function(year, month, day) {
+						var y = year;
+						var m = month;
+						if(m < 10) m = "0" + m;
+						var d = day;
+						if(d < 10) d = "0" + d;
+						return y + "-" + m + "-" + d
+					}
+				}
+			})
+		</script>
+	</body>
+
+</html>
